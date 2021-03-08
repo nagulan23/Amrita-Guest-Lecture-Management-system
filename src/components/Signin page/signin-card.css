@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.signhero {
+  display: inline-flex;
+  background-position: center;
+  background-size: cover;
+}
+
+/*background-image: linear-gradient( ======================================================================
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4),
+    url(amrita1.png)
+  );*/
+
+.signform-box {
+  width: 23.1vmax;
+  height: 500px;
+  position: relative;
+  /* background: rgb(244, 252, 135); */
+  padding: 5px;
+  overflow: hidden;
+}
+.signbutton-box {
+  width: 220px;
+  margin: 35px auto;
+  position: relative;
+  box-shadow: 0 0 10px 3px #494b51;
+  border-radius: 30px;
+}
+
+.signtoggle-btn1 {
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffe957;
+}
+
+.signtoggle-btn2 {
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+  font-size: 13px;
+  font-weight: bold;
+  color: #282c34;
+}
+
+#signbtn {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 110px;
+  height: 100%;
+  background-image: linear-gradient(#747474,#494b51,#494b51,#747474);
+  border-radius: 30px;
+  transition: 0.2s;
+}
+.signsocial-icons {
+  margin: 30px auto;
+  text-align: center;
+}
+.signsocial-icons img {
+  height: 50px;
+  width: 50px;
+  margin: 30px auto;
+  text-align: 0 12px;
+  box-shadow: 0 0 20px 0 #7f7f7f3d;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.signinput-group {
+  top: 180px;
+  position: absolute;
+  width: 280px;
+  transition: 0.5s;
+}
+.signinput-field {
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  /* border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #999; */
+  /* border-left: 2px solid rgb(82, 82, 82);
+  border-top: 2px solid rgb(82, 82, 82);
+  border-right:2px solid rgb(82, 82, 82);
+  border-bottom: 2px solid rgb(82, 82, 82); */
+  border-color: dimgray;
+  border-width: 3px;
+  /* outline: none; */
+  background: transparent;
+  border-radius: 6px;
+}
+.signsubmit-btn {
+  width: 85%;
+  padding: 10px 30px;
+  margin: auto;
+  cursor: pointer;
+  display: block;
+  /* background: linear-gradient((right,#ff105f,#ffad06)); */
+  background-color: #ffe957;
+  color: #494b51;
+  font-weight: bold;
+  font-size: 13px;
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+}
+.signcheck-box {
+  margin: 30px 10px 30p 0;
+}
+.signcheck-box1 {
+  margin: 30px 10px 30p 0;
+  visibility: hidden;
+}
+span {
+  color: #777;
+  font-size: 12px;
+  bottom: 38px;
+  /* bottom:68px; */
+  left: 20px;
+  position: absolute;
+}
+.signforgot-password{
+  text-emphasis-style: initial;
+  text-decoration: underline;
+  width: 100%;
+  left: 180px;
+  top: 10;
+  cursor: pointer;
+  color: rgb(255, 0, 0);
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+.signerror-text{
+  background-color:#f7b3b3;
+  border-radius: 10;
+  color:black;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  margin-bottom:10px;
+}
+
+#signlogin {
+  left: 50px;
+}
+#signregister {
+  left: 450px;
+}
+
+input[type="text"] {
+  width: 100%;
+  border: 2px solid rgb(104, 103, 103);
+  /* #aaa */
+  border-radius: 4px;
+  margin: 8px 0;
+  outline: none;
+  padding: 8px;
+  font-size: 13px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  /* background: rgb(244, 252, 135); */
+}
+
+input[type="text"]:focus {
+  border-color: #f5a80eda;
+  box-shadow: 0 0 8px 0 #f5a80eda;
+}
+
+.signinputwithIcon input[type="text"] {
+  padding-left: 40px;
+}
+
+.signinputwithIcon {
+  position: relative;
+}
+
+.signinputwithIcon i {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  padding: 9px 8px;
+  color: rgb(104, 103, 103);
+  transition: 0.3s;
+}
+
+.signinputwithIcon input[type="text"]:focus + i {
+  color: #f5a80eda;
+}
+
+/* .inputWithIcon.inputIconBg i {
+  background-color: #aaa;
+  color: #fff;
+  padding: 9px 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.inputWithIcon.inputIconBg input[type="text"]:focus + i {
+  color: #fff;
+  background-color: dodgerBlue;
+} */
+
+/*
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */

@@ -1,0 +1,60 @@
+.App {
+}
+
+.logo-name {
+  display: flex;
+  align-items: center;
+}
+
+.highlight {
+  color: #ffdf10;
+  white-space: pre;
+}
+
+.App-header {
+  background-color: #282c34;
+  height: 50%;
+  flex-direction: row;
+  padding-left: 2%;
+  font-size: 25px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image {
+  display: flex;
+  height: 30px;
+  margin: 2vmin;
+  transition: 0.3s;
+}
+
+.bgp {
+  height: calc(100vh - 50px);
+  transition: 0.3s;
+  display: block;
+}
+
+.card {
+  background-color: rgb(204, 196, 224);
+  color: #282c34;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.body {
+  display: flex;
+  flex-direction :row;
+  align-items: center;
+}

@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  font-family: roboto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+:root {
+  --bg: #242526;
+  --bg-accent: #484a4d;
+  --text-color: #dadce1;
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.image {
+  display: flex;
+  height: 30px;
+  margin: 2vmin;
+  transition: 0.3s;
+}
+
+.aglm-navbar {
+  height: var(--nav-size);
+  background-color: var(--bg);
+  padding: 0 1rem;
+  border-bottom: var(--border);
+}
+
+/* <ul> */
+.aglm-navbar-nav {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* <li> */
+.aglm-nav-item {
+  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon Button */
+.aglm-icon-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: #484a4d;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+}
+
+/* Dropdown Menu */
+
+.aglm-dropdown {
+  position: absolute;
+  top: 58px;
+  width: 300px;
+  margin-right: -1500px;
+  transform: translateX(-45%);
+  background-color: #242526;
+  border-radius: 10px;
+}
+
+.aglm-menu {
+  width: 100%;
+  margin-right: -5000px;
+}
+
+.aglm-menu-item {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding:20px;
+  font-size:18px;
+}
+
+.aglm-menu-item:hover {
+  background-color: #525357;
+}
+.highlight {
+  color: #ffdf10;
+  white-space: pre;
+}
+
+.logo-name {
+  display: flex;
+  align-items: center;
+}
+.rollno-profile {
+  padding: 7px;
+  margin-right:80px;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size:15px;
+  border: none;
+  color: green;
+  font-weight: bold;
+  display: block;
+}
+
+.home-header {
+  height: 50px;
+  width: 100%;
+  flex-direction: row;
+  font-size: 25px;
+  color: white;
+  background-color: #242526;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+}
+
+.home-body {
+  padding-top:50px;
+  display: flex;
+  flex-direction: column;
+}
