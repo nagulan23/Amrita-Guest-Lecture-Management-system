@@ -52,7 +52,12 @@ class Signin_Card extends Component {
         console.log("failed");
         this.setState({ errorText: "Incorrect Mail-ID or Password" });
       });
-    console.log(firebase.auth().currentUser);
+    window.user={
+      uid: firebase.auth().currentUser.uid,
+      roll_no: "CB.EN.U4CSE18135"
+    }
+    console.log(window.user.uid);
+
     console.log(this.state.signedIn);
     /*console.log(authMethods.signin(
       this.state.email,
@@ -93,7 +98,7 @@ class Signin_Card extends Component {
 
   error(){
     if(this.state.errorText!="")
-    return<div className="error-text">{this.state.errorText}</div>
+    return<div className="signerror-text">{this.state.errorText}</div>
   }
   render() {
     return (

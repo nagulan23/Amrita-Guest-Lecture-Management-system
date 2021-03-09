@@ -8,11 +8,22 @@ import CarouselContainer from "./highlights";
 import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import firebase from "firebase";
-import  Footer from "../footer/footer";
+import Footer from "../footer/footer";
 
 class Home extends Component {
   state = {};
-
+  componentWillMount() {
+    // Simple GET request using fetch
+    /*fetch("https://aglm.herokuapp.com/", {
+      method: "POST",
+      body: JSON.stringify({ uid: window.user.uid }),
+    })
+      .then((response) => response.json())
+      .then((data) => (window.user={roll_no: data.roll_no}));
+    console.log("============================");
+    console.log(window.user.roll_no);
+    console.log("============================");*/
+  }
   render() {
     return (
       <div className="App">
@@ -26,7 +37,10 @@ class Home extends Component {
             <h className="highlight"> S</h>ystem
           </div>
           <NavItem className="rollno-profile">
-            <DropdownMenu className="rollno-profile" changeSigninPage={this.props.changeSigninPage}></DropdownMenu>
+            <DropdownMenu
+              className="rollno-profile"
+              changeSigninPage={this.props.changeSigninPage}
+            ></DropdownMenu>
           </NavItem>
         </header>
         <div className="home-body">
@@ -34,7 +48,7 @@ class Home extends Component {
           <UpcomingLecture />
           <PastLecture />
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
@@ -48,7 +62,7 @@ function NavItem(props) {
   return (
     <div>
       <button onClick={() => setOpen(!open)} className="rollno-profile">
-        CB.EN.U4CSE18XXX
+        {window.user.roll_no}
       </button>
       {open && props.children}
     </div>
@@ -108,7 +122,9 @@ function DropdownMenu(props) {
         onEnter={calcHeight}
       >
         <div className="aglm-menu">
-          <DropdownItem goToMenu={props.changeSigninPage}>Sign Out</DropdownItem>
+          <DropdownItem goToMenu={props.changeSigninPage}>
+            Sign Out
+          </DropdownItem>
         </div>
       </CSSTransition>
     </div>
