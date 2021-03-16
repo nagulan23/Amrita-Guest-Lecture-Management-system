@@ -10,6 +10,8 @@
     color:#282c34;
     align-self: start;
     padding:20px;
+    background:linear-gradient(transparent,rgb(230, 229, 233),transparent);
+    
 }
 
 .underline{

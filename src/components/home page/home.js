@@ -9,22 +9,31 @@ import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import firebase from "firebase";
 import Footer from "../footer/footer";
+import axios from "axios";
+import CountBox from "./count";
 
 class Home extends Component {
-  state = {};
-  componentWillMount() {
-    // Simple GET request using fetch
-    /*fetch("https://aglm.herokuapp.com/", {
-      method: "POST",
-      body: JSON.stringify({ uid: window.user.uid }),
-    })
-      .then((response) => response.json())
-      .then((data) => (window.user={roll_no: data.roll_no}));
-    console.log("============================");
-    console.log(window.user.roll_no);
-    console.log("============================");*/
+  state = {
+    roll_no: "Loading...",
+  };
+  constructor() {
+    super();
+    this.getdata();
+  }
+
+  async getdata() {
+    await axios
+      .post(`https://aglm.herokuapp.com/`, {
+        uid: localStorage.getItem("userID"),
+      })
+      .then((res) => {
+        console.log(res.data);
+        window.user = { roll_no: res.data.roll_no };
+      });
+    this.setState({ roll_no: window.user.roll_no });
   }
   render() {
+    console.log("building....");
     return (
       <div className="App">
         <header className="home-header">
@@ -36,7 +45,7 @@ class Home extends Component {
             <h className="highlight"> M</h>anagement
             <h className="highlight"> S</h>ystem
           </div>
-          <NavItem className="rollno-profile">
+          <NavItem className="rollno-profile" roll_no={this.state.roll_no}>
             <DropdownMenu
               className="rollno-profile"
               changeSigninPage={this.props.changeSigninPage}
@@ -44,6 +53,10 @@ class Home extends Component {
           </NavItem>
         </header>
         <div className="home-body">
+          <div style={{ display: "flex",flexDirection:"row" ,justifyContent:"space-between", alignItems: "center"}}>
+            <CarouselContainer />
+            <CountBox />
+          </div>
           <OngoingLecture />
           <UpcomingLecture />
           <PastLecture />
@@ -58,11 +71,10 @@ export default Home;
 
 function NavItem(props) {
   const [open, setOpen] = useState(false);
-
   return (
     <div>
       <button onClick={() => setOpen(!open)} className="rollno-profile">
-        {window.user.roll_no}
+        {props.roll_no}
       </button>
       {open && props.children}
     </div>
@@ -94,13 +106,14 @@ function DropdownMenu(props) {
       </a>
     );
   }
-  async function signout(e) {
-    e.preventDefault();
+  async function signout() {
     await firebase
       .auth()
-      .signout()
+      .signOut()
       .then((res) => {
         console.log("success");
+        localStorage.clear();
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -122,9 +135,7 @@ function DropdownMenu(props) {
         onEnter={calcHeight}
       >
         <div className="aglm-menu">
-          <DropdownItem goToMenu={props.changeSigninPage}>
-            Sign Out
-          </DropdownItem>
+          <DropdownItem goToMenu={signout}>Sign Out</DropdownItem>
         </div>
       </CSSTransition>
     </div>

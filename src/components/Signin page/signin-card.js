@@ -3,6 +3,7 @@ import React, { Component, useContext } from "react";
 import firebaseAuth from "../../provider/AuthProvider";
 import { authMethods } from "../../firebase/authmethods";
 import firebase from "firebase";
+import axios from "axios";
 
 /*function HandleSubmit(e){
   console.log("Handle function")
@@ -46,28 +47,14 @@ class Signin_Card extends Component {
       .then((res) => {
         console.log("success");
         this.setState({ signedIn: true });
+        localStorage.setItem('userID', firebase.auth().currentUser.uid)
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
         console.log("failed");
         this.setState({ errorText: "Incorrect Mail-ID or Password" });
       });
-    window.user={
-      uid: firebase.auth().currentUser.uid,
-      roll_no: "CB.EN.U4CSE18135"
-    }
-    console.log(window.user.uid);
-
-    console.log(this.state.signedIn);
-    /*console.log(authMethods.signin(
-      this.state.email,
-      this.state.password
-    ));*/
-    if (this.state.signedIn) {
-      //if (() => firebaseAuth.handleSignin(this.state.email,this.state.password)) {
-      this.props.changeHomePage();
-      console.log("HandleSgnin function");
-    }
   }
 
   handleChangeEmail(event) {

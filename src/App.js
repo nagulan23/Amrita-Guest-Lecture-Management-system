@@ -36,22 +36,21 @@ export default App;*/
 class App extends Component {
   constructor() {
     super();
-    this.changeHomePage = this.changeHomePage.bind(this);
-    this.changeSigninPage=this.changeSigninPage.bind(this);
-  }
-
-  changeHomePage() {
-    console.log("change home called");
-    this.setState({ redirect: "/home" });
-  }
-
-  changeSigninPage() {
-    console.log("change signin called");
-    this.setState({ redirect: "/" });
+    const loggedInUser = localStorage.getItem("userID");
+    console.log("App.js executing");
+    console.log(loggedInUser);
+    if (loggedInUser) {
+      const userID = loggedInUser;
+      console.log(userID);
+      this.state.userID = userID;
+      this.state.redirect = "/home";
+    }
+    console.log(this.state);
   }
 
   state = {
     redirect: "",
+    userID: "",
   };
   render() {
     return (
@@ -59,15 +58,15 @@ class App extends Component {
         <Redirect to={this.state.redirect} />
         <Switch>
           <Route exact path="/">
-            <Signin changeHomePage={this.changeHomePage} />
+            <Signin/>
           </Route>
           <Route exact path="/home">
-            <Home changeSigninPage={this.changeSigninPage} />
+            <Home/>
           </Route>
         </Switch>
       </React.Fragment>
     );
   }
 }
-
+//<Home changeSigninPage={this.changeSigninPage} />
 export default App;

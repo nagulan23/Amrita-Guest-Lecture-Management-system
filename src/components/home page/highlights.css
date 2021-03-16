@@ -1,9 +1,14 @@
-.Outerbox {
-  width:75%;
-  height:100%;
-}
-.innerimagesize {
-  height: 500px;
-  width: 1018px;
+.carousel-wrapper-aglm {
+  max-width: 65%;
   margin: 20px;
+}
+
+.highlight-image-container {
+  height: 100%;
+  background-color:aqua;
+  overflow: hidden;
+}
+
+.highlight-short-image {
+  height: 100%;
 }

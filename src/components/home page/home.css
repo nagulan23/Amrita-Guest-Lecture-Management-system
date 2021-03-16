@@ -98,6 +98,7 @@ a {
   display: flex;
   align-items: center;
   border-radius: var(--border-radius);
+  color:white;
   transition: background var(--speed);
   padding:20px;
   font-size:18px;

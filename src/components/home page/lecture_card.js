@@ -25,20 +25,19 @@ import { useScroll } from "react-use-gesture";
 
 export default Lecture_card;*/
 class Lecture_card extends Component {
-  state = {};
   render() {
     return (
       <div className="lecture-container">
         <div className="image-container">
           <img
-            src="https://img.freepik.com/free-vector/music-event-poster-template-with-abstract-shapes_1361-1316.jpg?size=626&ext=jpg"
+            src={this.props.details.image}
             className="short-image"
           />
         </div>
         <div className="below-container">
-          <p className="title">Music Lecture</p>
-          <p className="content">19/2 18:00 - 20/2/18:00</p>
-          <p className="content">Amriteswari Hall</p>
+          <p className="title">{this.props.details.l_name}</p>
+          <p className="content">{this.props.details.Date} - {this.props.details.Time}</p>
+          <p className="content">{this.props.details.Roomno}</p>
         </div>
       </div>
     );
