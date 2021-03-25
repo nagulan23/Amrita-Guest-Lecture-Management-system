@@ -11,10 +11,26 @@ import firebase from "firebase";
 import Footer from "../footer/footer";
 import axios from "axios";
 import CountBox from "./count";
+import Approval_section from "./approval_section";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+} from "react-bootstrap";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+} from "react-router-dom";
 
 class Home extends Component {
   state = {
     roll_no: "Loading...",
+    section: 1,
   };
   constructor() {
     super();
@@ -32,6 +48,19 @@ class Home extends Component {
       });
     this.setState({ roll_no: window.user.roll_no });
   }
+
+  my() {
+    this.setState({ section: 2 });
+  }
+
+  all() {
+    this.setState({ section: 1 });
+  }
+
+  approve(){
+    this.setState({section:3});
+  }
+
   render() {
     console.log("building....");
     return (
@@ -53,13 +82,78 @@ class Home extends Component {
           </NavItem>
         </header>
         <div className="home-body">
-          <div style={{ display: "flex",flexDirection:"row" ,justifyContent:"space-between", alignItems: "center"}}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              backgroundImage: `url("https://wallpaperaccess.com/full/692084.png")`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+          >
             <CarouselContainer />
             <CountBox />
           </div>
-          <OngoingLecture />
-          <UpcomingLecture />
-          <PastLecture />
+          <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  style={{
+                    color: this.state.section == 1 ? "yellow" : "white",
+                    cursor: "pointer",
+                    "&:hover": { background: "#efefef" },
+                  }}
+                  onClick={this.all.bind(this)}
+                >
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  style={{
+                    color: this.state.section == 2 ? "yellow" : "white",
+                    cursor: "pointer",
+                  }}
+                  onClick={this.my.bind(this)}
+                >
+                  My Registrations
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  style={{
+                    color: this.state.section == 3 ? "yellow" : "white",
+                    cursor: "pointer",
+                  }}
+                  onClick={this.approve.bind(this)}
+                >
+                  Sign-in Approvals
+                </a>
+              </li>
+            </ul>
+          </Navbar>
+          <br />
+          {this.state.section == 1 ? (
+            <>
+              <OngoingLecture />
+              <UpcomingLecture />
+              <PastLecture />
+            </>
+          ) : this.state.section == 2 ? (
+            <>
+              <OngoingLecture />
+              <UpcomingLecture />
+              <PastLecture />
+            </>
+          ) : (
+            <Approval_section />
+          )}
         </div>
         <Footer />
       </div>
@@ -68,7 +162,39 @@ class Home extends Component {
 }
 
 export default Home;
-
+/*
+<Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+              <ul class="navbar-nav">
+                <li class="nav-item active"  >
+                  <a class="nav-link text-warning"  onClick={this.all.bind(this)} >
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onClick={this.my.bind(this)} >
+                    My Registrations
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" >
+                    About us
+                  </a>
+                </li>
+              </ul>
+            </Navbar>
+              <Navbar.Brand href="#home" style={{ color: "yellow" }}>
+                Home
+              </Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" icon />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                  <Nav.Link onClick={this.my.bind(this)}>
+                    My Registrations
+                  </Nav.Link>
+                  <Nav.Link href="/contact-us">About Us</Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+              */
 function NavItem(props) {
   const [open, setOpen] = useState(false);
   return (

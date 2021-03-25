@@ -1,11 +1,12 @@
 .carousel-wrapper-aglm {
   max-width: 65%;
   margin: 20px;
+  box-shadow: 0 0 10px 2px #282c34;
+  
 }
 
 .highlight-image-container {
   height: 100%;
-  background-color:aqua;
   overflow: hidden;
 }
 

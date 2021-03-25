@@ -19,9 +19,22 @@ class OngoingLecture extends Component {
       <div className="og-container">
         <div className="heading">Today's Lectures</div>
         <div className="underline"></div>
-        <ScrollContainer className="row-scroll">
-          {this.state.list_lecture.map((lecture) => 
-            <Lecture_card details={lecture} />
+        <ScrollContainer id="up-row-scroll" className="up-row-scroll">
+          {this.state.list_lecture.length > 0 ? (
+            this.state.list_lecture.map((lecture) => (
+              <Lecture_card details={lecture} />
+            ))
+          ) : (
+            <Lecture_card
+              details={{
+                image:
+                  "https://t3.ftcdn.net/jpg/02/66/33/82/360_F_266338299_wTr8tcMGNmjFbEJVnrkKXrrsHABMlqXY.jpg",
+                l_name: "No Lectures to display right now!",
+                Date: "",
+                Time: "",
+                Roomno: "",
+              }}
+            />
           )}
         </ScrollContainer>
       </div>

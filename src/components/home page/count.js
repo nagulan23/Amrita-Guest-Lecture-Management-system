@@ -14,6 +14,7 @@ export default function CountBox() {
         border: "4px solid black",
         borderRadius: "5px",
         boxShadow: "0px 0px 20px black",
+        backgroundColor:"white"
       }}
     >
       <div>
@@ -21,7 +22,7 @@ export default function CountBox() {
           style={{
             fontFamily: "sans-serif",
             display: "inline",
-            fontSize: 60,
+            fontSize: 55,
             fontWeight: "bold",
           }}
         >
@@ -48,7 +49,7 @@ export default function CountBox() {
           style={{
             fontFamily: "sans-serif",
             display: "inline",
-            fontSize: 60,
+            fontSize: 55,
             fontWeight: "bold",
           }}
         >
@@ -75,7 +76,7 @@ export default function CountBox() {
           style={{
             fontFamily: "sans-serif",
             display: "inline",
-            fontSize: 60,
+            fontSize: 55,
             fontWeight: "bold",
           }}
         >

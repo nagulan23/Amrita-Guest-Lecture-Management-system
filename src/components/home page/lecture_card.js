@@ -36,7 +36,7 @@ class Lecture_card extends Component {
         </div>
         <div className="below-container">
           <p className="title">{this.props.details.l_name}</p>
-          <p className="content">{this.props.details.Date} - {this.props.details.Time}</p>
+          {(this.props.details.Date=="")?<div/>:<p className="content">{this.props.details.Date} - {this.props.details.Time}</p>}
           <p className="content">{this.props.details.Roomno}</p>
         </div>
       </div>

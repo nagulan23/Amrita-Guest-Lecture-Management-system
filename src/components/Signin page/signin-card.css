@@ -119,10 +119,10 @@
   border-radius: 30px;
 }
 .signcheck-box {
-  margin: 30px 10px 30p 0;
+  margin: 30px 10px 30px 0;
 }
 .signcheck-box1 {
-  margin: 30px 10px 30p 0;
+  margin: 30px 10px 30px 0;
   visibility: hidden;
 }
 span {
@@ -147,7 +147,6 @@ span {
 
 .signerror-text{
   background-color:#f7b3b3;
-  border-radius: 10;
   color:rgb(252, 0, 0);
   border-radius: 10px;
   font-weight: bold;

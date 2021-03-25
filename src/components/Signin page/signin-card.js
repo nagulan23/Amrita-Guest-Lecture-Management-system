@@ -87,6 +87,7 @@ class Signin_Card extends Component {
     if(this.state.errorText!="")
     return<div className="signerror-text">{this.state.errorText}</div>
   }
+  
   render() {
     return (
       <div>
