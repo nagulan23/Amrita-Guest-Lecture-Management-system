@@ -1,6 +1,7 @@
 import "./App.css";
 import firebaseAuth from "./provider/AuthProvider";
 import Home from "./components/home page/home";
+import Header from "./components/home page/header";
 import Signin from "./components/Signin page/signin";
 import {
   BrowserRouter as Router,
@@ -61,7 +62,10 @@ class App extends Component {
             <Signin/>
           </Route>
           <Route exact path="/home">
-            <Home/>
+            <Header/>
+          </Route>
+          <Route exact path="/lecture">
+            <Header/>
           </Route>
         </Switch>
       </React.Fragment>
