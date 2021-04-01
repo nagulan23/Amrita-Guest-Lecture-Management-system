@@ -4,9 +4,6 @@ import firebase from "firebase";
 import Spinner from "react-spinkit";
 
 class Approval_card extends Component {
-  constructor(props) {
-    super();
-  }
   state = {
     email: "",
     password: "",
@@ -29,7 +26,6 @@ class Approval_card extends Component {
         console.log(err);
         console.log("failed");
       });
-    this.setState({ loading: false });
   }
 
   callDelete() {
@@ -39,9 +35,9 @@ class Approval_card extends Component {
   }
 
   render() {
-    this.setState ({email : this.props.details.email,
-    password : this.props.details.password,
-    date : this.props.details.Date});
+    this.state.email = this.props.details.email;
+    this.state.password = this.props.details.password;
+    this.state.date = this.props.details.Date;
     return (
       <div
         style={{
