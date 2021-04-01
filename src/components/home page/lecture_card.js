@@ -1,14 +1,5 @@
 import React, { Component } from "react";
 import "./lecture_card.css";
-import { animated, useSpring } from "react-spring";
-import { useScroll } from "react-use-gesture";
-import {
-  BrowserRouter as Router,
-  Route,
-  useHistory,
-  Redirect,
-  Switch,
-} from "react-router-dom";
 import { withRouter } from "react-router-dom";
 /*const Lecture_card = () => {
   const [style, set] = useSpring(() => ({
@@ -35,8 +26,9 @@ export default Lecture_card;*/
 class Lecture_card extends Component {
 
   openLecture() {
-    if (this.props.details.Date != "" )
+    if (this.props.details.Date !== "" )
     this.props.history.push("/lecture");
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -45,11 +37,11 @@ class Lecture_card extends Component {
         className="lecture-container"
         onClick={this.openLecture.bind(this)}>
         <div className="image-container">
-          <img src={this.props.details.image} className="short-image" />
+          <img src={this.props.details.image} className="short-image"  alt=""/>
         </div>
         <div className="below-container">
           <p className="title">{this.props.details.l_name}</p>
-          {this.props.details.Date == "" ? (
+          {this.props.details.Date === "" ? (
             <div />
           ) : (
             <p className="content">

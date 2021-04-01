@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import point from "../../assets/point.png";
 
 class Lecture_main extends Component {
@@ -42,6 +35,9 @@ class Lecture_main extends Component {
           <Nav.Link href="#requirements" style={{ color: "gray" }}>
             Requirements
           </Nav.Link>
+          <Nav.Link href="#registration" style={{ color: "gray" }}>
+            Registration
+          </Nav.Link>
         </Navbar>
         <div
           id="instructors"
@@ -62,7 +58,7 @@ class Lecture_main extends Component {
           }}
         >
           <img
-            class="rounded-circle z-depth-2"
+            className="rounded-circle z-depth-2"
             alt="50x50"
             src={this.state.instructor.img}
             style={{
@@ -116,7 +112,11 @@ class Lecture_main extends Component {
               paddingTop: "5px",
             }}
           >
-            <img src={point} style={{ height: "25px", paddingLeft: "40px" }} />
+            <img
+              src={point}
+              style={{ height: "25px", paddingLeft: "40px" }}
+              alt=""
+            />
             <div style={{ paddingLeft: "20px", fontSize: "20px" }}>{line}</div>
           </div>
         ))}
@@ -158,9 +158,46 @@ class Lecture_main extends Component {
         >
           Topics : {this.state.requirements[2]}
         </div>
+        <div
+          id="registration"
+          style={{
+            padding: "20px",
+            fontSize: "28px",
+            fontWeight: "bold",
+            color: "#282c34",
+          }}
+        >
+          Registration
+        </div>
+        <div style={{display:"flex",flexDirection:"row"}}>
+          <div>
+            <div
+              style={{
+                display: "flex",
+                paddingLeft: "40px",
+                paddingRight: "40px",
+                fontSize: "20px",
+                color: "#282c34",
+              }}
+            >
+              Before registering do check the fee details below. You would be
+              required to pay the fee amount after registration to complate the
+              registration process.
+            </div>
+            <div style={{fontWeight:"bold",fontSize:"20px",width:"20%",padding:"10px",color:"white",display:"inline-block",marginLeft:"40px",marginTop:"10px",borderRadius:"10px",backgroundImage:`url("https://t3.ftcdn.net/jpg/03/38/48/62/360_F_338486227_qQitUvh3nILqYiuQOUGxdfindoNMbtpH.jpg")`}}>
+              Fee: ₹ 0
+            </div>
+          </div>
+          <div style={{padding:"3px",border: "3px solid green",borderRadius:"10px",backgroundColor:"white",boxShadow:"0 0 10px black",margin:"20px",marginTop:"0px"}}>
+          <div style={{display:"flex",height:"200px",width:"150px",color:"white",backgroundImage:`url("https://img.freepik.com/free-vector/black-dark-3d-low-poly-geometric-background_79145-393.jpg?size=626&ext=jpg")`,borderRadius:"10px",alignItems:"center",justifyContent:"center",padding:"10px",textAlign:"center",fontWeight:"bold"}}>
+            Click here to Register
+          </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 export default Lecture_main;
+//backgroundColor:"#009929"

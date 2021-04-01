@@ -27,10 +27,9 @@ class Home extends Component {
         uid: localStorage.getItem("userID"),
       })
       .then((res) => {
-        console.log(res.data);
-        window.user = { type: res.data.type };
+        console.log(res.data.type);
+        this.setState({ type:  res.data.type  });
       });
-    this.setState({ type: window.user.type });
   }
 
   my() {
@@ -64,12 +63,12 @@ class Home extends Component {
           <CountBox />
         </div>
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-          <ul class="navbar-nav">
-            <li class="nav-item">
+          <ul className="navbar-nav">
+            <li className="nav-item">
               <a
-                class="nav-link"
+                className="nav-link"
                 style={{
-                  color: this.state.section == 1 ? "yellow" : "white",
+                  color: this.state.section === 1 ? "yellow" : "white",
                   cursor: "pointer",
                   "&:hover": { background: "#efefef" },
                 }}
@@ -78,26 +77,29 @@ class Home extends Component {
                 Home
               </a>
             </li>
-            <li class="nav-item">
+            {(this.state.type==="manager")?
+            <div></div>
+            :
+            <li className="nav-item">
               <a
-                class="nav-link"
+                className="nav-link"
                 style={{
-                  color: this.state.section == 2 ? "yellow" : "white",
+                  color: this.state.section === 2 ? "yellow" : "white",
                   cursor: "pointer",
                 }}
                 onClick={this.my.bind(this)}
               >
                 My Registrations
               </a>
-            </li>
-            {(this.state.type=="user")?
+            </li>}
+            {(this.state.type!=="manager")?
             <div></div>
             :
-            <li class="nav-item">
+            <li className="nav-item">
               <a
-                class="nav-link"
+                className="nav-link"
                 style={{
-                  color: this.state.section == 3 ? "yellow" : "white",
+                  color: this.state.section === 3 ? "yellow" : "white",
                   cursor: "pointer",
                 }}
                 onClick={this.approve.bind(this)}
@@ -109,17 +111,18 @@ class Home extends Component {
           </ul>
         </Navbar>
         <br />
-        {this.state.section == 1 ? (
+        {this.state.section === 1 ? (
           <>
-            <OngoingLecture />
-            <UpcomingLecture />
-            <PastLecture />
+            <OngoingLecture all={true}/>
+            <UpcomingLecture all={true}/>
+            <PastLecture all={true}/>
           </>
-        ) : this.state.section == 2 ? (
+        ) : this.state.section === 2 ? (
           <>
-            <OngoingLecture />
-            <UpcomingLecture />
-            <PastLecture />
+            <UpcomingLecture all={false}/>
+            <OngoingLecture all={false}/>
+            <div></div>
+            <PastLecture all={false}/>
           </>
         ) : (
           <Approval_section />

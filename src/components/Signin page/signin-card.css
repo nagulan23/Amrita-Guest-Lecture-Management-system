@@ -156,6 +156,17 @@ span {
   margin-bottom:10px;
 }
 
+.signuperror-text{
+  background-color:#afffc0;
+  color:rgb(0, 148, 25);
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  margin-bottom:10px;
+}
+
 #signlogin {
   left: 50px;
 }

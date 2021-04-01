@@ -1,5 +1,3 @@
-//import Typical from "react-typical";
-import { StrictMode } from "react";
 export default function CountBox() {
   return (
     <div

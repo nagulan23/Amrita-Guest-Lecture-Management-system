@@ -9,12 +9,10 @@ import Footer from "../footer/footer";
 import axios from "axios";
 import Lecture_main from "../Lecture/lecture_main";
 import {
-    BrowserRouter as Router,
     Route,
-    useHistory,
-    Redirect,
     Switch,
   } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 class Header extends Component {
   state = {
     roll_no: "Loading...",
@@ -31,7 +29,15 @@ class Header extends Component {
       })
       .then((res) => {
         console.log(res.data);
-        window.user = { roll_no: res.data.roll_no };
+        if(res.data.type==="user"){
+          window.user = { roll_no: res.data.roll_no };
+        }
+        else if(res.data.type==="guser"){
+          window.user = { roll_no: "Guest User" };
+        }
+        else{
+          window.user = { roll_no: "ADMIN" };
+        }
       });
     this.setState({ roll_no: window.user.roll_no });
   }
@@ -40,7 +46,7 @@ class Header extends Component {
     return (
       <div className="App">
         <header className="home-header">
-          <div className="logo-name">
+          <div className="logo-name" onClick={()=>this.props.history.push("/home")}>
             <img src={logo} alt="logo" className="image" />
             <h className="highlight">A</h>mrita
             <h className="highlight"> G</h>uest
@@ -71,7 +77,7 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
 
 function NavItem(props) {
   const [open, setOpen] = useState(false);

@@ -1,16 +1,12 @@
 import "./App.css";
-import firebaseAuth from "./provider/AuthProvider";
-import Home from "./components/home page/home";
 import Header from "./components/home page/header";
 import Signin from "./components/Signin page/signin";
 import {
-  BrowserRouter as Router,
   Route,
-  useHistory,
   Redirect,
   Switch,
 } from "react-router-dom";
-import React, { Component, useContext } from "react";
+import React, { Component } from "react";
 
 /*function App() {
   const {handleSignup,handleSignin,inputs,setInputs,errors} = useContext(firebaseAuth)

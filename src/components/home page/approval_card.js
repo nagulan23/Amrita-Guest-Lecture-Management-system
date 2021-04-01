@@ -1,13 +1,51 @@
 import React, { Component } from "react";
 import "./approval_card.css";
+import firebase from "firebase";
+import Spinner from "react-spinkit";
 
 class Approval_card extends Component {
-  state = {};
+  constructor(props) {
+    super();
+  }
+  state = {
+    email: "",
+    password: "",
+    date: "",
+    loading: false,
+  };
+
+  async firebaseSignup() {
+    this.setState({ loading: true });
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((res) => {
+        console.log(res.user.uid);
+        console.log("success");
+        window.approve={uid:res.user.uid};
+        this.props.delete();
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("failed");
+      });
+    this.setState({ loading: false });
+  }
+
+  callDelete() {
+    this.setState({ loading: true });
+    window.approve={uid:""};
+    this.props.delete();
+  }
+
   render() {
+    this.setState ({email : this.props.details.email,
+    password : this.props.details.password,
+    date : this.props.details.Date});
     return (
       <div
         style={{
-            width:"90%",
+          width: "90%",
           margin: "30px",
           backgroundColor: "white",
           padding: "20px",
@@ -27,7 +65,7 @@ class Approval_card extends Component {
             width: "50%",
           }}
         >
-          nagulan1645@gmail.com
+          {this.state.email}
         </div>
         <div
           style={{
@@ -39,15 +77,36 @@ class Approval_card extends Component {
           }}
         >
           <div style={{ fontSize: "25px", fontWeight: "w500", color: "gray" }}>
-            23/12/2000
+            {this.state.date}
           </div>
-          <div>
-            <button type="button" class="btn btn-info btn-circle btn-lg">
-              <a>✔</a>
-            </button>
-            <button type="button" class="btn btn-warning btn-circle btn-lg">
-              <a>✖</a>
-            </button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {this.state.loading ? (
+              <Spinner spinnerName="wave" />
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="btn btn-info btn-circle btn-lg"
+                  onClick={this.firebaseSignup.bind(this)}
+                >
+                  <a>✔</a>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-warning btn-circle btn-lg"
+                  onClick={this.callDelete.bind(this)}
+                >
+                  <a>✖</a>
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

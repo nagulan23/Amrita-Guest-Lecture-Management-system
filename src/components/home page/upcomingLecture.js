@@ -5,9 +5,14 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import axios from "axios";
 
 class UpcomingLecture extends Component {
-  constructor() {
+  constructor(props) {
     super();
+    (props.all)?
     axios.get(`https://aglm.herokuapp.com/nextlectures`).then((res) => {
+      this.setState({ list_lecture: res.data });
+    })
+    :
+    axios.post(`https://aglm.herokuapp.com/mylectures_future`,{uid:localStorage.getItem("userID")}).then((res) => {
       this.setState({ list_lecture: res.data });
     });
   }
@@ -17,12 +22,12 @@ class UpcomingLecture extends Component {
   render() {
     return (
       <div className="og-container">
-        <div className="heading">Upcoming Lectures</div>
+        <div className="heading">{(this.props.all)?"Upcoming Lectures":"Your Upcoming Lectures"}</div>
         <div className="underline"></div>
         <ScrollContainer id="up-row-scroll" className="up-row-scroll">
           {this.state.list_lecture.length > 0 ? (
             this.state.list_lecture.map((lecture) => (
-              <Lecture_card details={lecture} />
+              <Lecture_card key={lecture.lecture_id} details={lecture} />
             ))
           ) : (
             <Lecture_card

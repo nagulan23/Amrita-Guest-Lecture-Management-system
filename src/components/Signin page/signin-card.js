@@ -1,7 +1,5 @@
 import "./signin-card.css";
-import React, { Component, useContext } from "react";
-import firebaseAuth from "../../provider/AuthProvider";
-import { authMethods } from "../../firebase/authmethods";
+import React, { Component } from "react";
 import firebase from "firebase";
 import axios from "axios";
 
@@ -32,22 +30,33 @@ class Signin_Card extends Component {
     super(props);
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.handleChangeNewEmail = this.handleChangeNewEmail.bind(this);
+    this.handleChangeNewPassword = this.handleChangeNewPassword.bind(this);
+    this.handleChangeNewRepassword = this.handleChangeNewRepassword.bind(this);
   }
 
-  state = { email: "", password: "", signedIn: false, errorText: "" };
+  state = {
+    email: "",
+    password: "",
+    errorText: "",
+    newEmail: "",
+    newPassword: "",
+    newRepassword: "",
+  };
 
   async handleSubmit(e) {
     e.preventDefault();
     console.log(this.state.email);
     console.log(this.state.password);
     console.log("handleSignup1");
+    this.setState({errorText:"Signing in! Please wait"})
     await firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((res) => {
         console.log("success");
         this.setState({ signedIn: true });
-        localStorage.setItem('userID', firebase.auth().currentUser.uid)
+        localStorage.setItem("userID", firebase.auth().currentUser.uid);
         window.location.reload();
       })
       .catch((err) => {
@@ -57,17 +66,58 @@ class Signin_Card extends Component {
       });
   }
 
+  async handleSignUp(e) {
+    e.preventDefault();
+    if (
+      !(this.state.newEmail.includes("@") && this.state.newEmail.includes("."))
+    ) {
+      this.setState({ errorText: "Invalid Email" });
+    } else if (this.state.newPassword !== this.state.newRepassword) {
+      this.setState({ errorText: "Passwords do not match" });
+    } else {
+      this.setState({errorText:"Signing up! Please wait"})
+      await axios
+      .post(`https://aglm.herokuapp.com/requestlogin`, {
+        email: this.state.newEmail,
+        password: this.state.newPassword,
+      })
+      .then((res) => {
+        console.log(res.data);
+        if(res.data.status==="Success")
+        this.setState({errorText:"Success! You will be able to login once ADMIN approves"})
+        else
+        this.setState({errorText:"Sign up failed!"})
+      });
+    }
+  }
+
   handleChangeEmail(event) {
-    this.setState({ errorText:""});
+    this.setState({ errorText: "" });
     this.setState({ email: event.target.value });
   }
 
   handleChangePassword(event) {
-    this.setState({ errorText:""});
+    this.setState({ errorText: "" });
     this.setState({ password: event.target.value });
   }
 
+  handleChangeNewEmail(event) {
+    this.setState({ errorText: "" });
+    this.setState({ newEmail: event.target.value });
+  }
+
+  handleChangeNewPassword(event) {
+    this.setState({ errorText: "" });
+    this.setState({ newPassword: event.target.value });
+  }
+
+  handleChangeNewRepassword(event) {
+    this.setState({ errorText: "" });
+    this.setState({ newRepassword: event.target.value });
+  }
+
   login() {
+    this.setState({ errorText: "" });
     document.getElementById("signlogin").style.left = "50px";
     document.getElementById("signregister").style.left = "450px";
     document.getElementById("signbtn").style.left = "0px";
@@ -76,6 +126,7 @@ class Signin_Card extends Component {
   }
 
   register() {
+    this.setState({ errorText: "" });
     document.getElementById("signlogin").style.left = "-400px";
     document.getElementById("signregister").style.left = "50px";
     document.getElementById("signbtn").style.left = "110px";
@@ -83,11 +134,15 @@ class Signin_Card extends Component {
     document.getElementById("signtoggle-btn1").style.color = "#282c34";
   }
 
-  error(){
-    if(this.state.errorText!="")
-    return<div className="signerror-text">{this.state.errorText}</div>
+  error() {
+    if (this.state.errorText !== "" && this.state.errorText!=="Success! You will be able to login once ADMIN approves" )
+      return <div className="signerror-text">{this.state.errorText}</div>;
   }
-  
+  success() {
+    if (this.state.errorText === "Success! You will be able to login once ADMIN approves")
+      return <div className="signuperror-text">{this.state.errorText}</div>;
+  }
+
   render() {
     return (
       <div>
@@ -97,7 +152,7 @@ class Signin_Card extends Component {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
         />
         <div className="App">
-          <div class="signhero">
+          <div className="signhero">
             <div className="signform-box">
               <div className="signbutton-box">
                 <div id="signbtn"></div>
@@ -136,11 +191,11 @@ class Signin_Card extends Component {
                   />
                   <i
                     type="icon"
-                    class="fa fa-user-circle-o fa-lg fa-fw"
+                    className="fa fa-user-circle-o fa-lg fa-fw"
                     aria-hidden="true"
                   ></i>
                 </div>
-                <div class="signinputwithIcon">
+                <div className="signinputwithIcon">
                   <input
                     type="text"
                     placeholder="Password"
@@ -150,8 +205,7 @@ class Signin_Card extends Component {
                   />
                   <i
                     type="icon"
-                    className="signinputwithiconii"
-                    class="fa fa-lock fa-lg fa-fw"
+                    className="fa fa-lock fa-lg fa-fw"
                     aria-hidden="true"
                   ></i>
                 </div>
@@ -162,36 +216,55 @@ class Signin_Card extends Component {
                   Login
                 </button>
               </form>
-              <form id="signregister" className="signinput-group">
+              <form
+                id="signregister"
+                className="signinput-group"
+                onSubmit={this.handleSignUp.bind(this)}
+              >
                 {/* <input type="text" className="input-field" placeholder="Mail-Id" required/>
             <input type="text" className="input-field" placeholder="Password" required/> 
             <input type="text" className="input-field" placeholder="Re-Password" required/>*/}
 
-                <div class="signinputwithIcon">
-                  <input type="text" placeholder="Mail-Id" />
+                <div className="signinputwithIcon">
+                  <input
+                    type="text"
+                    placeholder="Mail-Id"
+                    onChange={this.handleChangeNewEmail}
+                    required
+                  />
                   <i
-                    class="fa fa-user-circle-o fa-lg fa-fw"
+                    className="fa fa-user-circle-o fa-lg fa-fw"
                     aria-hidden="true"
                   ></i>
                 </div>
-                <div class="signinputwithIcon">
-                  <input type="text" placeholder="Password" />
+                <div className="signinputwithIcon">
+                  <input
+                    type="text"
+                    placeholder="Password"
+                    onChange={this.handleChangeNewPassword}
+                    required
+                  />
                   <i
                     type="icon"
-                    class="fa fa-lock fa-lg fa-fw"
+                    className="fa fa-lock fa-lg fa-fw"
                     aria-hidden="true"
                   ></i>
                 </div>
-                <div class="signinputwithIcon">
-                  <input type="text" placeholder="Re-Password" />
+                <div className="signinputwithIcon">
+                  <input
+                    type="text"
+                    placeholder="Re-Password"
+                    onChange={this.handleChangeNewRepassword}
+                    required
+                  />
                   <i
                     type="icon"
-                    class="fa fa-key fa-lg fa-fw"
+                    className="fa fa-key fa-lg fa-fw"
                     aria-hidden="true"
                   ></i>
                 </div>
-                <input type="checkbox" className="signcheck-box"></input>
-                <span>I agree to terms and conditions*</span>
+                {this.error()}
+                {this.success()}
                 <button type="submit" className="signsubmit-btn">
                   Register
                 </button>
