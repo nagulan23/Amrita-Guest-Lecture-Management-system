@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Approval_card from "./approval_card";
 import axios from "axios";
 import Spinner from "react-spinkit";
+import empty from "../../assets/empty.gif";
 
 class Approval_section extends Component {
   constructor() {
@@ -54,7 +55,11 @@ class Approval_section extends Component {
           flexDirection: "column",
         }}
       >{this.state.list_approvals.length===0?
-        <img src="https://i.makeagif.com/media/12-20-2016/wZfadf.gif" alt=""/>
+        //<img src="https://i.makeagif.com/media/12-20-2016/wZfadf.gif" alt=""/>
+        <>
+          <img src={empty} alt=""/>
+          <div style={{fontSize:"20px"}}>No remaining approvals</div>
+        </>
         :
         this.state.list_approvals.map((e) => (
           <Approval_card key={e.email} details={e} delete={this.deleteEntry.bind(this,e.email)} />

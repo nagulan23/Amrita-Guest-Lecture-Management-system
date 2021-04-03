@@ -1,15 +1,56 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import point from "../../assets/point.png";
+import "./lecture_main.css";
+import "react-icons/fa";
+import {
+  MdLocationOn,
+  MdDateRange,
+  MdAccessTime,
+  MdInsertInvitation,
+  MdToday,
+  MdChromeReaderMode,
+  MdKeyboardArrowRight,
+  MdSubdirectoryArrowRight,
+} from "react-icons/md";
 
 class Lecture_main extends Component {
   state = {
+    /*lecturestatus: "Past Lectures",
+    regcount: "120",
+    poster:
+      "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/a0/8de0c0730a11e8a983190cf39a362d/My_Photo_lowsize3-copy.jpg?auto=format%2Ccompress&dpr=1&w=200&h=200",
+    organizer: "Infosys",
+    geoinfo: {
+      stdate: "13-2-2021",
+      eddate: "13-2-2021",
+      sttime: "6:00 pm",
+      edtime: "7:30 pm",
+      venue: "amriteshwari hall",
+      certificate: "E-Certificate",
+    },
     instructor: {
       name: "SAEED AGHABOZORGI",
       img:
         "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/a0/8de0c0730a11e8a983190cf39a362d/My_Photo_lowsize3-copy.jpg?auto=format%2Ccompress&dpr=1&w=200&h=200",
       position: "Associate Professor in Data Science",
     },
+    title: "Machine learning with python",
+    about: 
+        `This course dives into the basics of machine learning using an approachable, and well-known programming language, Python. \n
+\n
+        In this course, we will be reviewing two main components:\n
+        First, you will be learning about the purpose of Machine Learning and where it applies to the real world. 
+        Second, you will get a general overview of Machine Learning topics such as supervised vs unsupervised learning,  model evaluation, and Machine Learning algorithms. 
+        
+        In this course, you practice with real-life examples of Machine learning and see how it affects society in ways you may not have guessed!
+        
+        By just putting in a few hours a week for the next few weeks, this is what you’ll get.
+        1) New skills to add to your resume, such as regression, classification, clustering, sci-kit learn and SciPy 
+        2) New projects that you can add to your portfolio, including cancer detection, predicting economic trends, predicting customer churn, recommendation engines, and many more.
+        3) And a certificate in machine learning to prove your competency, and share it anywhere you like online or offline, such as LinkedIn profiles and social media.
+        
+        If you choose to take this course and earn the Coursera course certificate, you will also earn an IBM digital badge upon successful completion of the course.`,
     syllabus: [
       "ML Introduction",
       "Pre Processing",
@@ -18,12 +59,116 @@ class Lecture_main extends Component {
       "Q&A session",
     ],
     requirements: ["CSE, EEE, ECE", "2nd, 3rd", "None"],
+    fee: "0"*/
   };
   render() {
+    this.state=this.props.detail;
     return (
       <div>
+        <div
+          id="toplectureststbar"
+          styles={{
+            alignItems: "horizontal",
+            display: "flex",
+            marginLeft: "2px",
+            flexDirection: "row",
+            padding: "3px",
+            alignContent: "left",
+          }}
+        >
+          <div
+            id="lecturestat"
+            style={{
+              alignContent: "left",
+              padding: "10px",
+              fontSize: "18px",
+              textAlign: "left",
+              fontweight: "bold",
+              color: "#797979",
+              fontFamily: "Roboto",
+              fontWeight: "bolder",
+            }}
+          >
+            <MdSubdirectoryArrowRight /> {this.state.lecturestatus}
+          </div>
+        </div>
+        <div class="TOPDETAILHOLDER">
+          <div
+            id="title"
+            style={{
+              alignContent: "left",
+              padding: "10px",
+              paddingLeft:"20px",
+              fontSize: "40px",
+              textAlign: "left",
+              fontWeight: "bolder",
+            }}
+          >
+            {this.state.title}
+          </div>
+        </div>
+        <div style={{ display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+          <div
+            class="gradient_color "
+            style={{
+              width:"100%",
+              backgroundImage: "linear-gradient(to right, yellow , red)",
+              height: "200px",
+            }}
+          >
+            <div className="coulmn righttop">
+              <div class="col-md-3 col-sm-6">
+                <div
+                  id="Organizer"
+                  style={{
+                    alignContent: "left",
+                    padding: "20px",
+                    fontSize: "33px",
+                    textAlign: "left",
+                    fontFamily: "Charcoal",
+                    fontWeight: "bold",
+                    color: "#525252",
+                  }}
+                >
+                  Organizer : {this.state.organizer}
+                </div>
+                <div
+                  id="registrations"
+                  style={{
+                    alignContent: "left",
+                    padding: "20px",
+                    fontWeight: "bold",
+                    fontSize: "27px",
+                    textAlign: "left",
+                    color: "#525252",
+                  }}
+                >
+                  {this.state.regcount} registrations
+                </div>
+              </div>
+            </div>
+            <div
+              className="Poster"
+              style={{
+                marginTop: "-270px",
+                marginRight:"40px",
+                display: "flex",
+                justifyContent: "flex-end",
+                // maxHeight:"50px",
+                // height:"50px",
+                // width:"200px",
+              }}
+            >
+              <img
+                className="poster"
+                src={this.state.poster}
+                alt="Logo"
+              />
+            </div>
+          </div>
+        </div>
         <Navbar style={{ borderBottom: "1px solid black", padding: "5px" }}>
-          <Nav.Link href="/" style={{ fontWeight: "bold", color: "#ffa600" }}>
+          <Nav.Link href="#about" style={{ fontWeight: "bold", color: "#ffa600" }}>
             About
           </Nav.Link>
           <Nav.Link href="#instructors" style={{ color: "gray" }}>
@@ -39,6 +184,63 @@ class Lecture_main extends Component {
             Registration
           </Nav.Link>
         </Navbar>
+        <div style={{display: "flex",flexDirection:"row",justifyContent:"space-between"}}>
+          <div class="column left_ltmn" style={{ color: "gray",width:"70%" }}>
+            {/* <h2>Column 1</h2> */}
+            <div
+              id="about"
+              style={{
+                padding: "20px",
+                fontSize: "28px",
+                fontWeight: "bold",
+                color: "#282c34",
+                textAlign: "left",
+              }}
+            >
+              About this Lecture
+            </div>
+            <div
+              id="aboutDetailed"
+              style={{
+                textAlign: "left",
+                padding: "20px",
+                paddingBottom:"0px",
+                fontSize: "20px",
+                color: "#282c34",
+              }}
+            >
+              {this.state.about}
+            </div>
+          </div>
+          <div class="column right_ltmn" style={{ width:"30%"}}>
+            <ol
+              class="fa-ul"
+              style={{
+                textAlign: "left",
+                padding: "20px",
+                fontSize: "20px",
+                color: "#fa9e35",
+              }}
+            >
+              <li className="geo_inf" style={{listStyle:"none",marginBottom:"10px",marginTop:"50px"}} >
+                <MdToday  style={{ color: "#525252", fontSize:"40px", marginRight:"20px"}} />
+                {this.state.geoinfo.stdate} - {this.state.geoinfo.eddate}
+              </li>
+              <li className="geo_inf" style={{listStyle:"none",marginBottom:"10px" }}>
+                <MdAccessTime style={{ color: "#525252", fontSize:"40px", marginRight:"20px"}} />
+                {this.state.geoinfo.sttime} - {this.state.geoinfo.edtime}
+              </li>
+              <li className="geo_inf" style={{listStyle:"none",marginBottom:"10px" }}>
+                <MdLocationOn style={{ color: "#525252", fontSize:"40px", marginRight:"20px"}} />
+                {this.state.geoinfo.venue}
+              </li>
+              <li className="geo_inf" style={{listStyle:"none",marginBottom:"10px" }}> 
+                <MdChromeReaderMode style={{ color: "#525252", fontSize:"40px", marginRight:"20px"}} />
+                {this.state.geoinfo.certificate}
+              </li>
+            </ol>
+          </div>
+        </div>
         <div
           id="instructors"
           style={{
@@ -169,7 +371,7 @@ class Lecture_main extends Component {
         >
           Registration
         </div>
-        <div style={{display:"flex",flexDirection:"row"}}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
           <div>
             <div
               style={{
@@ -184,14 +386,52 @@ class Lecture_main extends Component {
               required to pay the fee amount after registration to complate the
               registration process.
             </div>
-            <div style={{fontWeight:"bold",fontSize:"20px",width:"20%",padding:"10px",color:"white",display:"inline-block",marginLeft:"40px",marginTop:"10px",borderRadius:"10px",backgroundImage:`url("https://t3.ftcdn.net/jpg/03/38/48/62/360_F_338486227_qQitUvh3nILqYiuQOUGxdfindoNMbtpH.jpg")`}}>
-              Fee: ₹ 0
+            <div
+              style={{
+                fontWeight: "bold",
+                fontSize: "20px",
+                width: "20%",
+                padding: "10px",
+                color: "white",
+                display: "inline-block",
+                marginLeft: "40px",
+                marginTop: "10px",
+                borderRadius: "10px",
+                backgroundImage: `url("https://t3.ftcdn.net/jpg/03/38/48/62/360_F_338486227_qQitUvh3nILqYiuQOUGxdfindoNMbtpH.jpg")`,
+              }}
+            >
+              Fee: ₹ {this.state.fee}
             </div>
           </div>
-          <div style={{padding:"3px",border: "3px solid green",borderRadius:"10px",backgroundColor:"white",boxShadow:"0 0 10px black",margin:"20px",marginTop:"0px"}}>
-          <div style={{display:"flex",height:"200px",width:"150px",color:"white",backgroundImage:`url("https://img.freepik.com/free-vector/black-dark-3d-low-poly-geometric-background_79145-393.jpg?size=626&ext=jpg")`,borderRadius:"10px",alignItems:"center",justifyContent:"center",padding:"10px",textAlign:"center",fontWeight:"bold"}}>
-            Click here to Register
-          </div>
+          <div
+            style={{
+              padding: "3px",
+              border: "3px solid green",
+              borderRadius: "10px",
+              backgroundColor: "white",
+              boxShadow: "0 0 10px black",
+              margin: "20px",
+              marginTop: "0px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                height: "200px",
+                width: "150px",
+                color: "white",
+                backgroundImage: `url("https://img.freepik.com/free-vector/black-dark-3d-low-poly-geometric-background_79145-393.jpg?size=626&ext=jpg")`,
+                borderRadius: "10px",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "10px",
+                textAlign: "center",
+                fontWeight: "bold",
+                cursor:"pointer"
+              }}
+            >
+              Click here to Register
+            </div>
           </div>
         </div>
       </div>

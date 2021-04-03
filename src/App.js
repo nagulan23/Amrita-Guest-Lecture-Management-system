@@ -1,12 +1,9 @@
 import "./App.css";
 import Header from "./components/home page/header";
 import Signin from "./components/Signin page/signin";
-import {
-  Route,
-  Redirect,
-  Switch,
-} from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import React, { Component } from "react";
+import Lecture_add from "./components/Lecture/lecture_add";
 
 /*function App() {
   const {handleSignup,handleSignin,inputs,setInputs,errors} = useContext(firebaseAuth)
@@ -55,13 +52,16 @@ class App extends Component {
         <Redirect to={this.state.redirect} />
         <Switch>
           <Route exact path="/">
-            <Signin/>
+            <Signin />
           </Route>
           <Route exact path="/home">
-            <Header/>
+            <Header />
           </Route>
           <Route exact path="/lecture">
-            <Header/>
+            <Header />
+          </Route>
+          <Route exact path="/lecture-create">
+            <Header />
           </Route>
         </Switch>
       </React.Fragment>

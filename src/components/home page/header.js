@@ -8,14 +8,13 @@ import firebase from "firebase";
 import Footer from "../footer/footer";
 import axios from "axios";
 import Lecture_main from "../Lecture/lecture_main";
-import {
-    Route,
-    Switch,
-  } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import Lecture_add from "../Lecture/lecture_add";
 class Header extends Component {
   state = {
     roll_no: "Loading...",
+    lecture_detail:{},
   };
   constructor() {
     super();
@@ -29,24 +28,36 @@ class Header extends Component {
       })
       .then((res) => {
         console.log(res.data);
-        if(res.data.type==="user"){
+        if (res.data.type === "user") {
           window.user = { roll_no: res.data.roll_no };
-        }
-        else if(res.data.type==="guser"){
+        } else if (res.data.type === "guser") {
           window.user = { roll_no: "Guest User" };
-        }
-        else{
+        } else {
           window.user = { roll_no: "ADMIN" };
         }
       });
     this.setState({ roll_no: window.user.roll_no });
   }
 
+  setData(detail,ch){
+    console.log("setted");
+    console.log(detail);
+    if(ch==1)
+    detail.lecturestatus="Ongoing Lecture";
+    else if(ch==2)
+    detail.lecturestatus="Upcoming Lecture";
+    else
+    detail.lecturestatus="Past Lecture";
+    this.setState({lecture_detail:detail});
+  }
   render() {
     return (
       <div className="App">
         <header className="home-header">
-          <div className="logo-name" onClick={()=>this.props.history.push("/home")}>
+          <div
+            className="logo-name"
+            onClick={() => this.props.history.push("/home")}
+          >
             <img src={logo} alt="logo" className="image" />
             <h className="highlight">A</h>mrita
             <h className="highlight"> G</h>uest
@@ -64,10 +75,13 @@ class Header extends Component {
         <div className="home-body">
           <Switch>
             <Route exact path="/home">
-              <Home />
+              <Home setDataLecture={(e,ch)=>this.setData(e,ch)}/>
             </Route>
             <Route exact path="/lecture">
-              <Lecture_main />
+              <Lecture_main detail={this.state.lecture_detail}/>
+            </Route>
+            <Route exact path="/lecture-create">
+              <Lecture_add />
             </Route>
           </Switch>
         </div>

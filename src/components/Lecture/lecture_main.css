@@ -1,0 +1,66 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+.poster {
+  border-radius: 20px;
+  height: 270px;
+  width: 470px;
+  box-shadow: 0 0 15px black;
+}
+
+.geo_inf {
+  padding: 5px ;
+  color : #307da8;
+  text-shadow: #333;
+  text-decoration: double;
+  font-size: 30px;
+}
+
+
+.left_ltmn {
+  float: left;
+}
+
+.right_ltmn {
+  float: left;
+}
+
+/* Clear floats after the columns */
+/* .row:after {
+  content: "";
+  display: table;
+  clear: both;
+} */
+/* Style the navbar */
+/* #navbar {
+    overflow: hidden;
+    background-color: #333;
+  } */
+  
+  /* Navbar links */
+  /* #navbar a {
+    float: left;
+    display: block;
+    color: #ce8d00;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  } */
+  
+  /* Page content */
+  /* .content {
+    padding: 16px;
+  } */
+  
+  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+  /* .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  } */
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  /* .sticky + .content {
+    padding-top: 60px;
+  } */

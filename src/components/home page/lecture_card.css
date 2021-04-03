@@ -21,6 +21,7 @@
 .image-container {
   height: 200px;
   width: 400px;
+  background-color: white;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 10px 2px #282c34;
@@ -45,14 +46,14 @@
 }
 
 .title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #282c34;
   margin-bottom: 10px;
 }
 
 .content {
-  font-size: 18px;
+  font-size: 15px;
   color: #282c34;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }

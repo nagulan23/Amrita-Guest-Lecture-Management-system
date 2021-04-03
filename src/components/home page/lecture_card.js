@@ -24,31 +24,38 @@ import { withRouter } from "react-router-dom";
 
 export default Lecture_card;*/
 class Lecture_card extends Component {
-
   openLecture() {
-    if (this.props.details.Date !== "" )
-    this.props.history.push("/lecture");
-    window.scrollTo(0, 0);
+    if (this.props.details.geoinfo.stdate !== "") {
+      this.props.setDataLecture();
+      //this.props.setDataLecture(this);
+      this.props.history.push("/lecture");
+      window.scrollTo(0, 0);
+    }
   }
 
   render() {
     return (
-      <div
-        className="lecture-container"
-        onClick={this.openLecture.bind(this)}>
+      <div className="lecture-container" onClick={this.openLecture.bind(this)}>
         <div className="image-container">
-          <img src={this.props.details.image} className="short-image"  alt=""/>
+          <img src={this.props.details.poster} className="short-image" alt="" />
         </div>
         <div className="below-container">
-          <p className="title">{this.props.details.l_name}</p>
-          {this.props.details.Date === "" ? (
+          <p className="title">{this.props.details.title}</p>
+          {this.props.details.geoinfo.stdate === "" ? (
             <div />
           ) : (
-            <p className="content">
-              {this.props.details.Date} - {this.props.details.Time}
-            </p>
+            <>
+              <p className="content">
+                {this.props.details.geoinfo.stdate} -{" "}
+                {this.props.details.geoinfo.eddate}
+              </p>
+              <p className="content">
+                {this.props.details.geoinfo.sttime} -{" "}
+                {this.props.details.geoinfo.edtime}
+              </p>
+            </>
           )}
-          <p className="content">{this.props.details.Roomno}</p>
+          <p className="content">{this.props.details.geoinfo.venue}</p>
         </div>
       </div>
     );

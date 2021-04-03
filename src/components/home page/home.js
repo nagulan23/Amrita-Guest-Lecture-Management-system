@@ -10,6 +10,10 @@ import Approval_section from "./approval_section";
 import {
   Navbar,
 } from "react-bootstrap";
+import { makeStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import { withRouter } from "react-router-dom";
 
 class Home extends Component {
   state = {
@@ -42,6 +46,12 @@ class Home extends Component {
 
   approve() {
     this.setState({ section: 3 });
+  }
+
+  create() {
+    this.setState({ section: 4 });
+    this.props.history.push("/lecture-create");
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -91,7 +101,8 @@ class Home extends Component {
               >
                 My Registrations
               </a>
-            </li>}
+            </li>
+            }
             {(this.state.type!=="manager")?
             <div></div>
             :
@@ -108,21 +119,37 @@ class Home extends Component {
               </a>
             </li>
               }
+              {(this.state.type!=="manager")?
+            <div></div>
+            :
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                style={{
+                  color: this.state.section === 4 ? "yellow" : "white",
+                  cursor: "pointer",
+                }}
+                onClick={this.create.bind(this)}
+              >
+                Create Lecture
+              </a>
+            </li>
+  }
           </ul>
         </Navbar>
         <br />
         {this.state.section === 1 ? (
           <>
-            <OngoingLecture all={true}/>
-            <UpcomingLecture all={true}/>
-            <PastLecture all={true}/>
+            <OngoingLecture all={true} setDataLecture={(e)=>this.props.setDataLecture(e,1)}/>
+            <UpcomingLecture all={true} setDataLecture={(e)=>this.props.setDataLecture(e,2)}/>
+            <PastLecture all={true} setDataLecture={(e)=>this.props.setDataLecture(e,3)}/>
           </>
         ) : this.state.section === 2 ? (
           <>
-            <UpcomingLecture all={false}/>
-            <OngoingLecture all={false}/>
+            <UpcomingLecture all={false} setDataLecture={(e)=>this.props.setDataLecture(e,2)}/>
+            <OngoingLecture all={false} setDataLecture={(e)=>this.props.setDataLecture(e,1)}/>
             <div></div>
-            <PastLecture all={false}/>
+            <PastLecture all={false} setDataLecture={(e)=>this.props.setDataLecture(e,3)}/>
           </>
         ) : (
           <Approval_section />
@@ -132,5 +159,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);
 
+/*
+
+
+
+*/
