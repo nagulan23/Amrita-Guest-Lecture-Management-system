@@ -1,6 +1,32 @@
-export default function CountBox() {
-  return (
-    <div
+import React, { Component } from 'react';
+import axios from "axios";
+
+class CountBox extends Component {
+  
+  constructor() {
+    super();
+    this.getdata();
+  }
+  
+  async getdata() {
+    await axios
+      .post(`https://aglm.herokuapp.com/countlectures`, {
+        uid: localStorage.getItem("userID"),
+      })
+      .then((res) => {
+        this.setState({ count:  res.data  });
+      });
+  }
+
+  state = { 
+    count:{
+      present:0,
+      future:0,
+      my:0,
+    } 
+  }
+  render() { 
+    return ( <div
       style={{
         textAlign: "left",
         padding: "20px",
@@ -24,7 +50,7 @@ export default function CountBox() {
             fontWeight: "bold",
           }}
         >
-          5
+          {this.state.count.present}
         </div>
         <div
           style={{
@@ -51,7 +77,7 @@ export default function CountBox() {
             fontWeight: "bold",
           }}
         >
-          3
+        {this.state.count.future}
         </div>
         <div
           style={{
@@ -78,7 +104,7 @@ export default function CountBox() {
             fontWeight: "bold",
           }}
         >
-          1
+        {this.state.count.my}
         </div>
         <div
           style={{
@@ -108,6 +134,8 @@ export default function CountBox() {
           />
         </div>
       </div>
-    </div>
-  );
+    </div> );
+  }
 }
+ 
+export default CountBox;
