@@ -30,7 +30,9 @@ class Lecture_card extends Component {
       //this.props.setDataLecture(this);
       this.props.history.push("/lecture");
       window.scrollTo(0, 0);
+      return("success");
     }
+    return("failure");
   }
 
   render() {

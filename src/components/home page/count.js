@@ -5,6 +5,7 @@ class CountBox extends Component {
   
   constructor() {
     super();
+    this.getdata = this.getdata.bind(this);
     this.getdata();
   }
   
@@ -12,11 +13,11 @@ class CountBox extends Component {
     await axios
       .post(`https://aglm.herokuapp.com/countlectures`, {
         uid: localStorage.getItem("userID"),
-      })
-      .then((res) => {
+      }).then((res) => {
         this.setState({ count:  res.data  });
       });
   }
+
 
   state = { 
     count:{

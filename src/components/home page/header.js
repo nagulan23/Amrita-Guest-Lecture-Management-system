@@ -18,6 +18,7 @@ class Header extends Component {
   };
   constructor() {
     super();
+    this.getdata = this.getdata.bind(this);
     this.getdata();
   }
 
@@ -27,7 +28,6 @@ class Header extends Component {
         uid: localStorage.getItem("userID"),
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data.type === "user") {
           window.user = { roll_no: res.data.roll_no };
         } else if (res.data.type === "guser") {
