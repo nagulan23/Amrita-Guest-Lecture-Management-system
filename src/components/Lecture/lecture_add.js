@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Multiselect } from "multiselect-react-dropdown";
 import axios from "axios";
 import Spinner from "react-spinkit";
 import {NotificationContainer, NotificationManager} from 'react-notifications';

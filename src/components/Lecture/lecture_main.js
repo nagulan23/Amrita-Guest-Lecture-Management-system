@@ -5,14 +5,12 @@ import "./lecture_main.css";
 import "react-icons/fa";
 import {
   MdLocationOn,
-  MdDateRange,
   MdAccessTime,
-  MdInsertInvitation,
   MdToday,
   MdChromeReaderMode,
-  MdKeyboardArrowRight,
   MdSubdirectoryArrowRight,
 } from "react-icons/md";
+import axios from "axios";
 
 class Lecture_main extends Component {
   state = {
@@ -61,6 +59,39 @@ class Lecture_main extends Component {
     requirements: ["CSE, EEE, ECE", "2nd, 3rd", "None"],
     fee: "0"*/
   };
+
+  async register(){
+    var uid=localStorage.getItem("userID");
+    await axios
+      .post(`https://aglm.herokuapp.com/register`, {
+        uid: uid,
+        lecture_id: this.state.lecture_id
+      }).then((res) => {
+        var list=this.state.registered;
+        list.push(uid);
+        this.setState({ registered: list  });
+      });
+    console.log(this.state.registered);
+  }
+
+  async cancel(){
+    var uid=localStorage.getItem("userID");
+    await axios
+      .post(`https://aglm.herokuapp.com/remove`, {
+        uid: uid,
+        lecture_id: this.state.lecture_id
+      }).then((res) => {
+        var list=this.state.registered;
+        for(var i=0;i<list.length;i++){
+          if(list[i]===uid)
+            break;
+        }
+        list.splice(i, 1);
+        this.setState({ registered: list  });
+      });
+      console.log(this.state.registered);
+  }
+
   render() {
     this.state=this.props.detail;
     return (
@@ -382,9 +413,8 @@ class Lecture_main extends Component {
                 color: "#282c34",
               }}
             >
-              Before registering do check the fee details below. You would be
-              required to pay the fee amount after registration to complate the
-              registration process.
+              {!(this.state.registered.includes(localStorage.getItem("userID")))?"Before registering do check the fee details below. You would be required to pay the fee amount after registration to complate the registration process."
+              :"To complete the registration process do the pay the fees amount to the concerned department head. If already paid can ignore the message! \n Remember, Cancellation of registration cannot be reversed"}
             </div>
             <div
               style={{
@@ -415,12 +445,13 @@ class Lecture_main extends Component {
             }}
           >
             <div
+              onClick={!(this.state.registered.includes(localStorage.getItem("userID")))?this.register.bind(this):this.cancel.bind(this)}
               style={{
                 display: "flex",
                 height: "200px",
                 width: "150px",
                 color: "white",
-                backgroundImage: `url("https://img.freepik.com/free-vector/black-dark-3d-low-poly-geometric-background_79145-393.jpg?size=626&ext=jpg")`,
+                backgroundImage: !(this.state.registered.includes(localStorage.getItem("userID")))?`url("https://img.freepik.com/free-vector/black-dark-3d-low-poly-geometric-background_79145-393.jpg?size=626&ext=jpg")`:`url("https://png.pngtree.com/thumb_back/fw800/background/20190906/pngtree-red-polygonal-background-image_314107.jpg")`,
                 borderRadius: "10px",
                 alignItems: "center",
                 justifyContent: "center",
@@ -430,7 +461,11 @@ class Lecture_main extends Component {
                 cursor:"pointer"
               }}
             >
-              Click here to Register
+              {!(this.state.registered.includes(localStorage.getItem("userID")))?
+              "Click here to Register"
+              :
+              "Click here to Cancel"
+              }
             </div>
           </div>
         </div>
