@@ -42,6 +42,9 @@ class App extends Component {
           <Route exact path="/lecture-create">
             <Header />
           </Route>
+          <Route exact path="/lecturer">
+            <Header />
+          </Route>
         </Switch>
       </React.Fragment>
     );

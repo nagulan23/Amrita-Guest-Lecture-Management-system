@@ -1,0 +1,108 @@
+
+  
+  .ltt_lect_info_mail_linkedin_bg{
+    position: absolute;
+  width: 605px;
+  height: 72px;
+  left: 683px;
+  top: 743px;
+  
+  background: rgba(254, 242, 164, 0.79);
+  border: 1px solid rgba(244, 179, 102, 0.54);
+  box-sizing: border-box;
+  border-radius: 25px;
+  }
+  .ltt_lect_info_mail_logo{
+  
+  position: absolute;
+  width: 79px;
+  height: 43px;
+  left: 713px;
+  top: 756px;
+  
+  background: url(../../assets/Gmail-logo.png);
+  }
+  
+  .ltt_lect_info_linkedin_logo{
+    position: absolute;
+    width: 44px;
+    height: 43px;
+    left: 1000px;
+    top: 756px;
+    
+    background: url(../../assets/linkedin-logo.png);
+  
+  }
+  .ltt_lect_info_mail_text{
+    position: absolute;
+  width: 194px;
+  height: 40px;
+  left: 789px;
+  top: 759px;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  
+  color: #EB4336;
+  
+  /* border: 1px solid rgba(0, 0, 0, 0.15); */
+  }
+  
+  .ltt_lect_info_linkedin_text{
+  
+  position: absolute;
+  width: 215px;
+  height: 42px;
+  left: 1061px;
+  top: 760px;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  
+  color: #0077B7;
+  }
+  
+  .ltt_lecture_dp{
+  width: 217px;
+  height: 217px;
+  
+  /* background: url(face1.png); */
+  border-radius: 30px 70px;
+  border: 0px ;
+  
+  }
+  .ltt_lecture_dp:hover{
+  }
+  .ltt_lecture_dp_square{
+    position: absolute;
+    width: 217px;
+    height: 214px;
+    left: 1083px;
+    top: 228px;
+    
+    border: 6px solid rgba(0, 0, 0, 0.53);
+    box-sizing: border-box;
+    border-radius: 25px;
+  }
+  .ltt_lecture_dp_circle{
+    position: absolute;
+  width: 214px;
+  height: 207px;
+  left: 877px;
+  top: 447px;
+  
+  border: 6px solid rgba(0, 0, 0, 0.53);
+  border-radius: 50%;
+  box-sizing: border-box;
+  }
+  

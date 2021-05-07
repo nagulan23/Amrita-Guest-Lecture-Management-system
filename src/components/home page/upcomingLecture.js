@@ -27,7 +27,7 @@ class UpcomingLecture extends Component {
         <ScrollContainer id="up-row-scroll" className="up-row-scroll">
           {this.state.list_lecture.length > 0 ? (
             this.state.list_lecture.map((lecture) => (
-              <Lecture_card key={lecture.lecture_id} details={lecture} setDataLecture={()=>this.props.setDataLecture(lecture)}/>
+              <Lecture_card key={lecture.lecture_id} details={lecture} lecturestatus="Upcoming Lecture"/>
             ))
           ) : (
             <Lecture_card

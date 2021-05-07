@@ -11,6 +11,7 @@ import Lecture_main from "../Lecture/lecture_main";
 import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Lecture_add from "../Lecture/lecture_add";
+import Lecturer from "../Lecturer/lecturer_main";
 class Header extends Component {
   state = {
     roll_no: "Loading...",
@@ -75,13 +76,16 @@ class Header extends Component {
         <div className="home-body">
           <Switch>
             <Route exact path="/home">
-              <Home setDataLecture={(e,ch)=>this.setData(e,ch)}/>
+              <Home setDataLecture={(e,ch)=>this.setData(e,ch)} type={this.state.roll_no}/>
             </Route>
             <Route exact path="/lecture">
-              <Lecture_main detail={this.state.lecture_detail}/>
+              <Lecture_main detail={this.state.lecture_detail} type={this.state.roll_no}/>
             </Route>
             <Route exact path="/lecture-create">
               <Lecture_add />
+            </Route>
+            <Route exact path="/lecturer">
+              <Lecturer />
             </Route>
           </Switch>
         </div>

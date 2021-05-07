@@ -4,9 +4,11 @@ import { withRouter } from "react-router-dom";
 class Lecture_card extends Component {
   openLecture() {
     if (this.props.details.geoinfo.stdate !== "") {
-      this.props.setDataLecture();
+      //this.props.setDataLecture();
       //this.props.setDataLecture(this);
-      this.props.history.push("/lecture");
+      var detail=this.props.details;
+      detail['lecturestatus']=this.props.lecturestatus;
+      this.props.history.push({pathname: "/lecture", state: { detail: detail }});
       window.scrollTo(0, 0);
       return("success");
     }

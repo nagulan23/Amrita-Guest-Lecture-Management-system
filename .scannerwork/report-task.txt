@@ -2,5 +2,5 @@ projectKey=aglm-demo
 serverUrl=http://localhost:9000
 serverVersion=8.7.1.42226
 dashboardUrl=http://localhost:9000/dashboard?id=aglm-demo
-ceTaskId=AXiodEg86-A27cM6XGak
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXiodEg86-A27cM6XGak
+ceTaskId=AXjt5DIFaPE62Cq7nvGR
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXjt5DIFaPE62Cq7nvGR

@@ -14,24 +14,8 @@ import { withRouter } from "react-router-dom";
 
 class Home extends Component {
   state = {
-    type: "user",
     section: 1,
   };
-  constructor() {
-    super();
-    this.getdata();
-  }
-
-  async getdata() {
-    await axios
-      .post(`https://aglm.herokuapp.com/`, {
-        uid: localStorage.getItem("userID"),
-      })
-      .then((res) => {
-        console.log(res.data.type);
-        this.setState({ type:  res.data.type  });
-      });
-  }
 
   my() {
     this.setState({ section: 2 });
@@ -84,7 +68,7 @@ class Home extends Component {
                 Home
               </a>
             </li>
-            {(this.state.type==="manager")?
+            {(this.props.type==="ADMIN")?
             <div></div>
             :
             <li className="nav-item">
@@ -100,7 +84,7 @@ class Home extends Component {
               </a>
             </li>
             }
-            {(this.state.type!=="manager")?
+            {(this.props.type!=="ADMIN")?
             <div></div>
             :
             <li className="nav-item">
@@ -116,7 +100,7 @@ class Home extends Component {
               </a>
             </li>
               }
-              {(this.state.type!=="manager")?
+              {(this.props.type!=="ADMIN")?
             <div></div>
             :
             <li className="nav-item">
