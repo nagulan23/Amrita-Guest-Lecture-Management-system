@@ -1,0 +1,63 @@
+.modala{
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  
+  .modal_contenta{
+    background-color:white;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 40%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid black;
+  }
+  .opena{
+    color:lightcoral;
+    font-size: x-large;
+    font-family: fantasy;
+    text-align: center;
+    
+  }
+  .closea{
+    color: Black;
+    float: right;
+  }
+  
+  .commona{
+    font: normal;
+    text-align: left;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: large;
+    color: lightcoral;
+  }
+  .commonal{
+    align-items: center;
+    text-align: center;
+    background-color: yellow;
+    shape-margin: 2px;
+  }
+
+  input[type="text1"]
+{   width: 300px;
+    font: size 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+  .success{
+    font-size: x-large;
+    color: yellowgreen;
+    text-align: center;
+  }
+
+  .closea:hover{
+    color: cyan;
+    cursor: pointer;
+  }

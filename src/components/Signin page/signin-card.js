@@ -1,8 +1,8 @@
 import "./signin-card.css";
-import React, { Component } from "react";
+import React, { Component, useState} from "react";
 import firebase from "firebase";
 import axios from "axios";
-
+import Popup from "./Popup";
 /*function HandleSubmit(e){
   console.log("Handle function")
   e.preventDefault()
@@ -42,7 +42,15 @@ class Signin_Card extends Component {
     newEmail: "",
     newPassword: "",
     newRepassword: "",
+    seen: false,
   };
+   togglePop () {
+    this.setState({
+     seen: !this.state.seen
+    });
+    console.log(this.state.seen);
+   };
+
 
   async handleSubmit(e) {
     e.preventDefault();
@@ -151,6 +159,7 @@ class Signin_Card extends Component {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
         />
+       {this.state.seen? <Popup toggle = {this.togglePop.bind(this)}/>:<div/>}
         <div className="App">
           <div className="signhero">
             <div className="signform-box">
@@ -210,7 +219,7 @@ class Signin_Card extends Component {
                   ></i>
                 </div>
                 <input type="checkbox" className="signcheck-box1"></input>
-                <p className="signforgot-password">Forgot Password?</p>
+                <p onClick= {this.togglePop.bind(this)} className="signforgot-password">Forgot Password?</p>
                 {this.error()}
                 <button type="submit" className="signsubmit-btn">
                   Login
