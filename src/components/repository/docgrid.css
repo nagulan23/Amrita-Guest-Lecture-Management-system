@@ -1,30 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
-.HOVcontainer .title {
-  color: #1a1a1a;
-  text-align: center;
-  margin-bottom: 10px;
-}
 
-.HOVcontent {
+.REPcontent {
   position: relative;
-  height: 200px;
-  width: 400px;
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.HOVcontent2 {
-  position: center;
-  max-width: 400px;
   overflow: hidden;
 }
-
-.HOVcontent .HOVcontent-overlay {
+.REPcontent .REPcontent-overlay {
   background: rgba(0, 0, 0, 0.7);
   position: absolute;
-  height: 100%;
-  width: 100%;
   left: 0;
   top: 0;
   bottom: 0;
@@ -35,22 +18,16 @@
   transition: all 0.4s ease-in-out 0s;
 }
 
-.HOVcontent:hover .HOVcontent-overlay {
-  opacity: 1;
+.REPcontent:hover .REPcontent-overlay {
+  opacity: 0;
 }
 
-.HOVcontent-image {
-  width:100%;
-  min-height: 100%;
-  border-radius: 20px;
-}
 
-.HOVcontent-details {
+.REPcontent-details {
   position: absolute;
   text-align: center;
   padding-left: 1em;
   padding-right: 1em;
-  width: 50%;
   top: 50%;
   left: 50%;
   opacity: 0;
@@ -62,28 +39,14 @@
   transition: all 0.3s ease-in-out 0s;
 }
 
-.HOVcontent:hover .HOVcontent-details {
+.REPcontent:hover .REPcontent-details {
   top: 50%;
   left: 50%;
   opacity: 1;
 }
 
-.HOVcontent-details h3 {
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  margin-bottom: 0.5em;
-  text-transform: uppercase;
-}
-
-.HOVcontent-details p {
-  color: #fff;
-  font-size: 0.8em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of lines to show */
-  -webkit-box-orient: vertical;
+.REPcontent-details img {
+  color: rgb(0, 0, 0);
 }
 
 .fadeIn-bottom {

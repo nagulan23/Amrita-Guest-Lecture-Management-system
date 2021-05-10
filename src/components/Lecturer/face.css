@@ -1,0 +1,118 @@
+
+.ltt_lecture_dp_square{
+  z-index: -1;
+  position: relative;
+
+  width: 214px;
+  height: 214px;
+  left: 206px;
+  top: 0px;
+  margin-left: 0px;
+  margin-top: -305px;
+  transition: all 0.5s ease;
+  border: 6px solid rgba(0, 0, 0, 0.53);
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+.ltt_lecture_dp{
+  width: 213px;
+  height: 217px;
+  top:105px;
+  left:99px;
+  margin-top: 105px;
+  margin-left: 99px;
+  border-radius: 30px 70px;
+  border: 0px ;
+  }
+.ltt_lecture_dp_circle{
+
+width: 214px;
+height: 207px;
+left: 0px;
+top: 219px;
+margin-top: -0px;
+border-radius: 50%;
+border: 6px solid rgba(0, 0, 0, 0.53);
+box-sizing: border-box;
+transition: all 0.5s ease;
+}
+
+
+/*
+.ltt_lecture_dp_square{
+  position: relative;
+
+  width: 217px;
+  height: 214px;
+  left: 206px;
+  top: 0px;
+  margin-left: 0px;
+  margin-top: -305px;
+
+  border: 6px solid rgba(0, 0, 0, 0.53);
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+.ltt_lecture_dp{
+  overflow: hidden;
+  width: 213px;
+  height: 217px;
+  top:105px;
+  left:99px;
+  margin-top: 105px;
+  margin-left: 99px;
+  border-radius: 30px 70px;
+  border: 0px ;
+  }
+.ltt_lecture_dp_circle{
+
+width: 214px;
+height: 207px;
+left: 0px;
+top: 219px;
+margin-top: -0px;
+border-radius: 50%;
+border: 6px solid rgba(0, 0, 0, 0.53);
+box-sizing: border-box;
+}
+
+
+
+
+
+.ltt_lecture_dp_square{
+  position: relative;
+
+  width: 217px;
+  height: 214px;
+  left: 206px;
+  top: 0px;
+  margin-left: -106px;
+  margin-top: -219px;
+
+  border: 6px solid rgba(0, 0, 0, 0.53);
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+.ltt_lecture_dp{
+  width: 213px;
+  height: 217px;
+  top:105px;
+  left:99px;
+  margin-top: 105px;
+  margin-left: 99px;
+  border-radius: 30px 70px;
+  border: 0px ;
+  }
+.ltt_lecture_dp_circle{
+
+width: 214px;
+height: 207px;
+left: 0px;
+top: 219px;
+margin-top: -211px;
+margin-left: 103px;
+border-radius: 50%;
+border: 6px solid rgba(0, 0, 0, 0.53);
+box-sizing: border-box;
+}*/

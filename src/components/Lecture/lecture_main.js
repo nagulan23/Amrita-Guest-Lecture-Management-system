@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import {withRouter} from 'react-router-dom';
 import ParticipantList from './participant_list';
+import Repo_main from '../repository/repo_main';
 
 class Lecture_main extends Component {
 
@@ -20,6 +21,8 @@ class Lecture_main extends Component {
     super();
     this.state=props.history.location.state.detail;
     this.state.pointer=0;
+    this.state.instructor=null
+    this.getInstructorData(props.history.location.state.detail.lecturer_id);
   }
 
   state = {
@@ -70,6 +73,15 @@ class Lecture_main extends Component {
       this.setState({pointer:a});
     }
     console.log(this.state.pointer);
+  }
+
+  async getInstructorData(id){
+    await axios
+      .post(`http://localhost:3000/getLecturer`, {
+        id: id,
+      }).then((res) => {
+        this.setState({ instructor:res.data });
+      });
   }
 
   render() {
@@ -204,7 +216,7 @@ class Lecture_main extends Component {
           </div>}
         </Navbar>
         {(this.state.pointer===5)?<ParticipantList/>:
-          (this.state.pointer===6)?<div>fuck u repo</div>:
+          (this.state.pointer===6)?<Repo_main/>:
         <>
           <div style={{display: "flex",flexDirection:"row",justifyContent:"space-between"}}>
             <div class="column left_ltmn" style={{ color: "gray",width:"70%" }}>
@@ -284,7 +296,7 @@ class Lecture_main extends Component {
             <img
               className="rounded-circle z-depth-2"
               alt="50x50"
-              src={this.state.instructor.img}
+              src={(this.state.instructor==null)?"https://images.vexels.com/media/users/3/147101/isolated/preview/b4a49d4b864c74bb73de63f080ad7930-instagram-profile-button-by-vexels.png":this.state.instructor.profile}
               style={{
                 borderWidth: "1px",
                 width: "80px",
@@ -298,7 +310,7 @@ class Lecture_main extends Component {
             <div>
               <a
                 onClick={()=>{
-                    this.props.history.push({pathname: '/lecturer', state: { id: 23 }});
+                    this.props.history.push({pathname: '/lecturer', state: { detail: this.state.instructor }});
                     window.scrollTo(0, 0);
                   }
                 }
@@ -310,7 +322,7 @@ class Lecture_main extends Component {
                   cursor: "pointer",
                 }}
               >
-                {this.state.instructor.name}
+                {(this.state.instructor==null)?"--:--":this.state.instructor.name}
               </a>
               <div
                 style={{
@@ -319,7 +331,7 @@ class Lecture_main extends Component {
                   color: "#282c34",
                 }}
               >
-                {this.state.instructor.position}
+                {(this.state.instructor==null)?"--:--":this.state.instructor.degree}
               </div>
             </div>
           </div>

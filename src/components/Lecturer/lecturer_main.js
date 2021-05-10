@@ -2,15 +2,18 @@ import React, { Component } from "react";
 import {withRouter} from 'react-router-dom';
 import Hover from './Hover';
 import ScrollContainer from "react-indiana-drag-scroll";
-import Lecturer_dp from "./Lecturer_dp";
+import Lecturer_dp from "./face";
+import Contact from "./MailLinkedin";
 
 class Lecturer extends Component {
-  state = {};
+  state = {
+
+  };
   render() {
     console.log(this.props.history.location.state);
     return (
       <div>
-        <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+        <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
           <div
             style={{
               width: "65%",
@@ -28,14 +31,14 @@ class Lecturer extends Component {
                 fontSize: "40px",
                 fontWeight:"bold"
             }}>
-                Nikola Tesla
+                {this.props.history.location.state.detail.name}
             </div>
             <div style={{
                 color: "#616161",
                 fontSize: "15px",
                 fontWeight:"bold"
             }}>
-                B.tech, M.tech. ph.D
+                {this.props.history.location.state.detail.degree}
             </div>
             <div style={{
                 color: "#616161",
@@ -43,10 +46,14 @@ class Lecturer extends Component {
                 fontWeight:"bold",
                 margin:"30px",
             }}>
-                A blend of Industrial and Teaching experience for 14 years. Strongly passionate to take up challenging tasks. Authored / Co- Authored 45 books for reputed publishers across globe. Authored 121 research papers in revered international journals, 28 Papers in international/national conferences.
+                {this.props.history.location.state.detail.bio}
             </div>
           </div>
-          <Lecturer_dp/>
+          <div >
+            <Lecturer_dp profile={this.props.history.location.state.detail.profile}/>
+            <Contact gmail={this.props.history.location.state.detail.gmail} linkedin={this.props.history.location.state.detail.linkedin}/>
+          </div>
+          <div/>
         </div>
         <div style={{
              border:"1px solid black",
@@ -75,10 +82,9 @@ class Lecturer extends Component {
                 Achivements
               </div>
             <div style={{paddingLeft:"40px",}}>
-            <li>Published 100+ publications </li>
-            <li>Won 200+ hackathon </li>
-            <li> National representative of ACM </li>
-            <li>Founder of Electric Dipole Organization</li>
+              {this.props.history.location.state.detail.achievements.map((achievement) => (
+                <li>{achievement}</li>
+              ))}
             </div>
           </div>
           <img src="https://img.freepik.com/free-vector/target-achievement-teamwork-business_107791-46.jpg?size=626&ext=jpg" alt="achievements.JPG" height="200px" style={{
@@ -101,12 +107,9 @@ class Lecturer extends Component {
             Previous Lectures
           </div>
           <ScrollContainer id="up-row-scroll" className="up-row-scroll">
-            <Hover data={{url:"https://img.freepik.com/free-vector/music-event-poster-template-with-abstract-shapes_1361-1316.jpg?size=626&ext=jpg",title:"Machine Learning",date:"2000/12/34",des:"Lets make machines learn things by itself ;)"}}/>
-            <Hover data={{url:"https://www.themodern.org/sites/default/files/2019-06/holzer_lecture2.jpg",title:"Machine Learning",date:"2000/12/34",des:"Lets make machines learn things by itself ;)"}}/>
-            <Hover data={{url:"https://www.themodern.org/sites/default/files/2019-06/holzer_lecture2.jpg",title:"Machine Learning",date:"2000/12/34",des:"Lets make machines learn things by itself ;)"}}/>
-            <Hover data={{url:"https://www.themodern.org/sites/default/files/2019-06/holzer_lecture2.jpg",title:"Machine Learning",date:"2000/12/34",des:"Lets make machines learn things by itself ;)"}}/>
-            <Hover data={{url:"https://www.themodern.org/sites/default/files/2019-06/holzer_lecture2.jpg",title:"Machine Learning",date:"2000/12/34",des:"Lets make machines learn things by itself ;)"}}/>
-            <Hover data={{url:"https://www.themodern.org/sites/default/files/2019-06/holzer_lecture2.jpg",title:"Machine Learning",date:"2000/12/34",des:"Lets make machines learn things by itself ;)"}}/>
+            {this.props.history.location.state.detail.lectures.map((lecture) => (
+                  <Hover data={{url:lecture.poster,title:lecture.title,date:lecture.date,des:lecture.about}}/>
+                ))}
           </ScrollContainer>
         </div>
       </div>

@@ -11,6 +11,7 @@ import Lecture_main from "../Lecture/lecture_main";
 import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Lecture_add from "../Lecture/lecture_add";
+import Lecturer_add from "../Lecturer/lecturer_add";
 import Lecturer from "../Lecturer/lecturer_main";
 class Header extends Component {
   state = {
@@ -83,6 +84,9 @@ class Header extends Component {
             </Route>
             <Route exact path="/lecture-create">
               <Lecture_add />
+            </Route>
+            <Route exact path="/lecturer-create">
+              <Lecturer_add />
             </Route>
             <Route exact path="/lecturer">
               <Lecturer />

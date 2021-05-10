@@ -29,9 +29,15 @@ class Home extends Component {
     this.setState({ section: 3 });
   }
 
-  create() {
-    this.setState({ section: 4 });
-    this.props.history.push("/lecture-create");
+  create(id) {
+    if(id==4){
+      this.setState({ section: 4 });
+      this.props.history.push("/lecture-create");
+    }
+    if(id==5){
+      this.setState({ section: 5 });
+      this.props.history.push("/lecturer-create");
+    }
     window.scrollTo(0, 0);
   }
 
@@ -110,12 +116,28 @@ class Home extends Component {
                   color: this.state.section === 4 ? "yellow" : "white",
                   cursor: "pointer",
                 }}
-                onClick={this.create.bind(this)}
+                onClick={this.create.bind(this,4)}
               >
                 Create Lecture
               </a>
             </li>
-  }
+            }
+            {(this.props.type!=="ADMIN")?
+            <div></div>
+            :
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                style={{
+                  color: this.state.section === 4 ? "yellow" : "white",
+                  cursor: "pointer",
+                }}
+                onClick={this.create.bind(this,5)}
+              >
+                Add Lecturer
+              </a>
+            </li>
+            }
           </ul>
         </Navbar>
         <br />
