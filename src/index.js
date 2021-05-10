@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Popup from './components/Signin page/Popup'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthProvider from './provider/AuthProvider'
