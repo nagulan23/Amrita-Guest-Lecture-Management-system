@@ -1,0 +1,53 @@
+.Borderlink {
+    width: 326.5px;
+    height: 265px;
+    left: 0px;
+    top: 1327px;
+    
+    background: #F1F3F4;
+    border: 2px solid #C1C1C1;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.iframe1 {
+    border-radius: 15px 15px 0px 0px;
+}
+
+.linkline {
+    width: 321px;
+    height: 0px;
+    margin-top: -6px;
+
+    border: 1px solid #C1C1C1;
+}
+.alinktext{
+    color: #7A7A7A;
+    
+}
+
+.linktext{
+    width: 290px;
+    height: 34px;
+    margin-left: 18px;
+    margin-top: 8px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    overflow: hidden;
+    color: #4E4E4E;
+
+
+}
+
+iframe {
+    pointer-events: none;
+    margin-left: 10px;
+    margin-top: 10px;
+    mix-blend-mode: multiply;
+    opacity: 0.75;
+}

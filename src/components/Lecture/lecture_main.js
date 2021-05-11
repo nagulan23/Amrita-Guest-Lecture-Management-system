@@ -206,7 +206,7 @@ class Lecture_main extends Component {
           <Nav.Link href="#registration" style={{ color: "gray" }}>
             Registration
           </Nav.Link>
-          {(this.props.type==="ADMIN")?<div style={{ cursor:"pointer",backgroundColor:"orange", color:"white",padding:"5px",borderRadius:"5px",fontWeight:"bold",marginLeft:"10px",marginRight:"30px"}}
+          {(this.props.type===('ADMIN'))?<div style={{ cursor:"pointer",backgroundColor:"orange", color:"white",padding:"5px",borderRadius:"5px",fontWeight:"bold",marginLeft:"10px",marginRight:"30px"}}
             onClick={this.changePointer.bind(this,5)}>
             {(this.state.pointer!=5)?"Show Participant List":"Close Participant List"}
           </div>:<div/>}
@@ -215,8 +215,8 @@ class Lecture_main extends Component {
             {(this.state.pointer!=6)?"Show Repository":"Close Repository"}
           </div>}
         </Navbar>
-        {(this.state.pointer===5)?<ParticipantList/>:
-          (this.state.pointer===6)?<Repo_main/>:
+        {(this.state.pointer===5)?<ParticipantList lecture_id={this.state.lecture_id} registered={this.state.registered}/>:
+          (this.state.pointer===6)?<Repo_main admin={this.props.type===('ADMIN')} files={this.state.repository} lecture_id={this.state.lecture_id}/>:
         <>
           <div style={{display: "flex",flexDirection:"row",justifyContent:"space-between"}}>
             <div class="column left_ltmn" style={{ color: "gray",width:"70%" }}>

@@ -226,7 +226,7 @@ class Lecture_add extends Component {
           </label>
           <label>
             {"Instructor :  "}
-            <select>
+            <select >
               <option name="male">M Sumesh</option>
               <option name="female">Jaya kumar C</option>
             </select>

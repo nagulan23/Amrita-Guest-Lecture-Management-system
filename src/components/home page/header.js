@@ -12,7 +12,7 @@ import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Lecture_add from "../Lecture/lecture_add";
 import Lecturer_add from "../Lecturer/lecturer_add";
-import Lecturer from "../Lecturer/lecturer_main";
+import Lecturer from "../Lecturer/lecturer_main";import { useHistory } from "react-router-dom";
 class Header extends Component {
   state = {
     roll_no: "Loading...",
@@ -117,6 +117,7 @@ function DropdownMenu(props) {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
   const dropdownRef = useRef(null);
+  let history = useHistory();
 
   useEffect(() => {
     setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
@@ -145,7 +146,7 @@ function DropdownMenu(props) {
       .then((res) => {
         console.log("success");
         localStorage.clear();
-        window.location.reload();
+        history. push("/signin");
       })
       .catch((err) => {
         console.log(err);

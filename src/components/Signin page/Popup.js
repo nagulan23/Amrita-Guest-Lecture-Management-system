@@ -56,7 +56,7 @@ class Popup extends Component {
                   <input type="text1" id="pin" name="pin" onChange = {this.handleChange}/>
                 <br />
                 <br />
-                <input type="submit" className = "commonal"/>
+                <input type="submit" className = "commonal" style={{border:"none",padding:"5px",paddingLeft:"20px",paddingRight:"20px",borderRadius:"20px",boxShadow:"0 0 10px black"}}/>
               </form>
             </div>
           </div>:
@@ -65,7 +65,7 @@ class Popup extends Component {
                       <div className="closea" onClick={this.handleClick.bind(this)}>
                           &times;
                         </div>
-                          <div className = "success">Email sent successfully!</div>
+                          <div className = "success" >Email sent successfully!</div>
                       </div>
         </div>
     }
