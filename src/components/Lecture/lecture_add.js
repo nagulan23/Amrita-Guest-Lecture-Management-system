@@ -5,6 +5,12 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 class Lecture_add extends Component {
+
+  constructor(){
+    super();
+    this.getData();
+  }
+
   state = {
     title: "",
     organizer: "",
@@ -22,19 +28,23 @@ class Lecture_add extends Component {
     syllabus: [],
     requirements: ["", "", ""],
     fee: "",
-    instructor: {
-      name: "SAEED AGHABOZORGI",
-      img:
-        "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/a0/8de0c0730a11e8a983190cf39a362d/My_Photo_lowsize3-copy.jpg?auto=format%2Ccompress&dpr=1&w=200&h=200",
-      position: "Associate Professor in Data Science",
-    },
+    lecturer_id:"1",
     error: "",
     loading: false,
+    options:[]
   };
+
+  async getData(){
+    await axios.get(`https://aglm.herokuapp.com/lecturerList`).then((res) => {
+        this.setState({options:res.data});
+    });
+    console.log(this.state.options);
+  }
 
   async handleCreate(event) {
     event.preventDefault();
     this.setState({ error: "" });
+    console.log(this.state);
     if (this.state.geoinfo.stdate > this.state.geoinfo.eddate)
       this.setState({ error: "Date Invalid" });
     else if (
@@ -44,9 +54,11 @@ class Lecture_add extends Component {
       this.setState({ error: "Time Invalid" });
     else {
       this.setState({ loading: true });
-      var data = this.state;
+      var data = {};
+      Object.assign(data, this.state);
       delete data.loading;
       delete data.error;
+      delete data.options;
       await axios
         .post(`https://aglm.herokuapp.com/createlecture`, data)
         .then((res) => {
@@ -104,6 +116,8 @@ class Lecture_add extends Component {
       var geoinfo = this.state.geoinfo;
       geoinfo.edtime = event.target.value;
       this.setState({ geoinfo: geoinfo });
+    }if (cat === "instructor") {
+      this.setState({ lecturer_id: event.target.value });
     }
   }
 
@@ -226,9 +240,12 @@ class Lecture_add extends Component {
           </label>
           <label>
             {"Instructor :  "}
-            <select >
-              <option name="male">M Sumesh</option>
-              <option name="female">Jaya kumar C</option>
+            <select onChange={this.handleChange.bind(this, "instructor")}>
+              {
+                this.state.options.map((e)=>(
+                  <option  value={e.lecturer_id}>{e.name}</option>
+                ))
+              }
             </select>
           </label>
           <label>

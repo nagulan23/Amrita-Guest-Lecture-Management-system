@@ -77,7 +77,7 @@ class Lecture_main extends Component {
 
   async getInstructorData(id){
     await axios
-      .post(`http://localhost:3000/getLecturer`, {
+      .post(`https://aglm.herokuapp.com/getLecturer`, {
         id: id,
       }).then((res) => {
         this.setState({ instructor:res.data });

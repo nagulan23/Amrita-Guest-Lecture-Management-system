@@ -21,7 +21,7 @@ class Repo_add extends Component {
             "url":this.state.url
         }
         console.log(data);
-        await axios.post(`http://localhost:3000/addFile`, data)
+        await axios.post(`https://aglm.herokuapp.com/addFile`, data)
         .then((res) => {
             console.log(res);
             NotificationManager.success('Added content','Success!' );

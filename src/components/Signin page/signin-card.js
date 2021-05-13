@@ -206,7 +206,7 @@ class Signin_Card extends Component {
                 </div>
                 <div className="signinputwithIcon">
                   <input
-                    type="text"
+                    type="password"
                     placeholder="Password"
                     password={this.state.password}
                     onChange={this.handleChangePassword}

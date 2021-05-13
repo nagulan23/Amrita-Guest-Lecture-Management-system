@@ -14,7 +14,7 @@ class ParticipantList extends Component {
 
     async getData(){
         var email=[];
-        await axios.post(`http://localhost:3000/getParticipants`,{'id':this.props.lecture_id}).then((res) => {
+        await axios.post(`https://aglm.herokuapp.com/getParticipants`,{'id':this.props.lecture_id}).then((res) => {
             email=res.data;
         });
         this.setState({email:email});

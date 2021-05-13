@@ -6,28 +6,14 @@ import 'react-notifications/lib/notifications.css';
 
 class Lecturer_add extends Component {
   state = {
-    title: "",
-    organizer: "",
-    about: "",
-    poster: "",
-    geoinfo: {
-      stdate: "",
-      eddate: "",
-      sttime: "",
-      edtime: "",
-      venue: "",
-      certificate: "No Certificate",
-    },
-    regcount: "",
-    syllabus: [],
-    requirements: ["", "", ""],
-    fee: "",
-    instructor: {
-      name: "SAEED AGHABOZORGI",
-      img:
-        "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/a0/8de0c0730a11e8a983190cf39a362d/My_Photo_lowsize3-copy.jpg?auto=format%2Ccompress&dpr=1&w=200&h=200",
-      position: "Associate Professor in Data Science",
-    },
+    name:"",
+    degree:"",
+    bio:"",
+    gmail:"",
+    linkedin:"",
+    lectures:[],
+    profile:"",
+    achievements:[],
     error: "",
     loading: false,
   };
@@ -35,76 +21,29 @@ class Lecturer_add extends Component {
   async handleCreate(event) {
     event.preventDefault();
     this.setState({ error: "" });
-    if (this.state.geoinfo.stdate > this.state.geoinfo.eddate)
-      this.setState({ error: "Date Invalid" });
-    else if (
-      this.state.geoinfo.stdate == this.state.geoinfo.eddate &&
-      this.state.geoinfo.sttime >= this.state.geoinfo.edtime
-    )
-      this.setState({ error: "Time Invalid" });
-    else {
-      this.setState({ loading: true });
+    console.log(this.state);
+    this.setState({ loading: true });
       var data = this.state;
       delete data.loading;
       delete data.error;
       await axios
-        .post(`https://aglm.herokuapp.com/createlecture`, data)
+        .post(`https://aglm.herokuapp.com/createlecturer`, data)
         .then((res) => {
           console.log(res);
-          NotificationManager.success('Created Lecture','Success!' );
+          NotificationManager.success('Created Lecturer','Success!' );
         });
         this.setState({ loading: false });
-    }
   }
 
   handleChange(cat, event) {
     this.setState({ error: "" });
-    if (cat === "lname") this.setState({ title: event.target.value });
-    else if (cat === "oname") this.setState({ organizer: event.target.value });
-    else if (cat === "des") this.setState({ about: event.target.value });
-    else if (cat === "purl") this.setState({ poster: event.target.value });
-    else if (cat === "loc") {
-      var geoinfo = this.state.geoinfo;
-      geoinfo.venue = event.target.value;
-      this.setState({ geoinfo: geoinfo });
-    } else if (cat === "maxreg")
-      this.setState({ regcount: event.target.value });
-    else if (cat === "syllabus")
-      this.setState({ syllabus: event.target.value.split(",") });
-    else if (cat === "dep") {
-      var req = this.state.requirements;
-      req[0] = event.target.value;
-      this.setState({ requirements: req });
-    } else if (cat === "year") {
-      var req = this.state.requirements;
-      req[1] = event.target.value;
-      this.setState({ requirements: req });
-    } else if (cat === "topic") {
-      var req = this.state.requirements;
-      req[2] = event.target.value;
-      this.setState({ requirements: req });
-    } else if (cat === "fee") this.setState({ fee: event.target.value });
-    else if (cat === "certificate") {
-      var geoinfo = this.state.geoinfo;
-      geoinfo.certificate = event.target.value;
-      this.setState({ geoinfo: geoinfo });
-    } else if (cat === "dates") {
-      var geoinfo = this.state.geoinfo;
-      geoinfo.stdate = event.target.value.replaceAll("-", "/");
-      this.setState({ geoinfo: geoinfo });
-    } else if (cat === "datet") {
-      var geoinfo = this.state.geoinfo;
-      geoinfo.eddate = event.target.value.replaceAll("-", "/");
-      this.setState({ geoinfo: geoinfo });
-    } else if (cat === "times") {
-      var geoinfo = this.state.geoinfo;
-      geoinfo.sttime = event.target.value;
-      this.setState({ geoinfo: geoinfo });
-    } else if (cat === "timet") {
-      var geoinfo = this.state.geoinfo;
-      geoinfo.edtime = event.target.value;
-      this.setState({ geoinfo: geoinfo });
-    }
+    if (cat === "name") this.setState({ name: event.target.value });
+    else if (cat === "degree") this.setState({ degree: event.target.value });
+    else if (cat === "bio") this.setState({ bio: event.target.value });
+    else if (cat === "purl") this.setState({ profile: event.target.value });
+    else if (cat === "gmail") this.setState({ gmail: event.target.value });
+    else if (cat === "lin") this.setState({ linkedin: event.target.value });
+    else if (cat === "ach") this.setState({ achievements: event.target.value.split(",") });
   }
 
   render() {
@@ -149,7 +88,7 @@ class Lecturer_add extends Component {
             <input
               name="name"
               type="name"
-              onChange={this.handleChange.bind(this, "lname")}
+              onChange={this.handleChange.bind(this, "name")}
               required
             />
           </label>
@@ -158,7 +97,7 @@ class Lecturer_add extends Component {
             <input
               name="name"
               type="name"
-              onChange={this.handleChange.bind(this, "oname")}
+              onChange={this.handleChange.bind(this, "degree")}
               required
             />
           </label>
@@ -167,7 +106,7 @@ class Lecturer_add extends Component {
             <input
               name="bio"
               type="text"
-              onChange={this.handleChange.bind(this, "des")}
+              onChange={this.handleChange.bind(this, "bio")}
               required
             />
           </label>
@@ -185,7 +124,7 @@ class Lecturer_add extends Component {
             <input
               name="gmail"
               type="name"
-              onChange={this.handleChange.bind(this, "purl")}
+              onChange={this.handleChange.bind(this, "gmail")}
               required
             />
           </label>
@@ -194,7 +133,7 @@ class Lecturer_add extends Component {
             <input
               name="linkedin"
               type="name"
-              onChange={this.handleChange.bind(this, "purl")}
+              onChange={this.handleChange.bind(this, "lin")}
               required
             />
           </label>
@@ -203,7 +142,7 @@ class Lecturer_add extends Component {
             <input
               name="syllabus"
               type="text"
-              onChange={this.handleChange.bind(this, "syllabus")}
+              onChange={this.handleChange.bind(this, "ach")}
               required
             />
           </label>

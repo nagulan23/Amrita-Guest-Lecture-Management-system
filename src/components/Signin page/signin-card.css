@@ -197,6 +197,29 @@ input[type="text"]:focus {
   padding-left: 40px;
 }
 
+input[type="password"] {
+  width: 100%;
+  border: 2px solid rgb(104, 103, 103);
+  /* #aaa */
+  border-radius: 4px;
+  margin: 8px 0;
+  outline: none;
+  padding: 8px;
+  font-size: 13px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  /* background: rgb(244, 252, 135); */
+}
+
+input[type="password"]:focus {
+  border-color: #f5a80eda;
+  box-shadow: 0 0 8px 0 #f5a80eda;
+}
+
+.signinputwithIcon input[type="password"] {
+  padding-left: 40px;
+}
+
 .signinputwithIcon {
   position: relative;
 }
@@ -211,6 +234,10 @@ input[type="text"]:focus {
 }
 
 .signinputwithIcon input[type="text"]:focus + i {
+  color: #f5a80eda;
+}
+
+.signinputwithIcon input[type="password"]:focus + i {
   color: #f5a80eda;
 }
 

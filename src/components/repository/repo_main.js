@@ -37,7 +37,7 @@ class Repo_main extends Component {
               </div>
               <div style={{height:"2px",width:"30%",margin:"10px",marginTop:"0px",backgroundColor:"gray"}}/>
               <div style={{display:"flex",flexDirection:"row"}}>
-                  <div style={{width:"380px"}}>
+                  <div style={{width:"390px"}}>
                       <div className="repo-menu" style={{display:"flex",flexDirection:"row",padding:"10px",paddingLeft:"30px",marginBottom:"10px",backgroundColor:(this.state.section==1)?"#def4ff":"white",fontWeight:"bold",color:(this.state.section==1)?"#007cba":"gray",borderTopRightRadius:"30px",borderBottomRightRadius:"30px",alignItems:"center",borderRight:"1px solid gray",borderBottom:"1px solid gray",cursor:"pointer"}}
                       onClick={this.changePage.bind(this,1)}>
                         <div style={{paddingRight:"20px",fontSize:"20px"}}>M</div>
