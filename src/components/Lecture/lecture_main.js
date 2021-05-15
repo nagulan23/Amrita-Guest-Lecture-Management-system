@@ -65,11 +65,9 @@ class Lecture_main extends Component {
     console.log(a);
     console.log(this.state.pointer===a);
     if(this.state.pointer===a){
-      console.log("her1");
       this.setState({pointer:0});
     }
     else{
-      console.log("her2");
       this.setState({pointer:a});
     }
     console.log(this.state.pointer);
@@ -206,7 +204,7 @@ class Lecture_main extends Component {
           <Nav.Link href="#registration" style={{ color: "gray" }}>
             Registration
           </Nav.Link>
-          {(this.props.type===('ADMIN'))?<div style={{ cursor:"pointer",backgroundColor:"orange", color:"white",padding:"5px",borderRadius:"5px",fontWeight:"bold",marginLeft:"10px",marginRight:"30px"}}
+          {(this.props.type===('ADMIN'))?<div id="spl_button" style={{ cursor:"pointer",backgroundColor:"orange", color:"white",padding:"5px",borderRadius:"5px",fontWeight:"bold",marginLeft:"10px",marginRight:"30px"}}
             onClick={this.changePointer.bind(this,5)}>
             {(this.state.pointer!=5)?"Show Participant List":"Close Participant List"}
           </div>:<div/>}
@@ -217,7 +215,7 @@ class Lecture_main extends Component {
         </Navbar>
         {(this.state.pointer===5)?<ParticipantList lecture_id={this.state.lecture_id} registered={this.state.registered}/>:
           (this.state.pointer===6)?<Repo_main admin={this.props.type===('ADMIN')} files={this.state.repository} lecture_id={this.state.lecture_id}/>:
-        <>
+        <div >
           <div style={{display: "flex",flexDirection:"row",justifyContent:"space-between"}}>
             <div class="column left_ltmn" style={{ color: "gray",width:"70%" }}>
               {/* <h2>Column 1</h2> */}
@@ -479,7 +477,7 @@ class Lecture_main extends Component {
               </div>
             </div>
           </div>
-          </>
+          </div>
           }
       </div>
     );

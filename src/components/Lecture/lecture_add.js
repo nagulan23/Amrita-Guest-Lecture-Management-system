@@ -38,7 +38,6 @@ class Lecture_add extends Component {
     await axios.get(`https://aglm.herokuapp.com/lecturerList`).then((res) => {
         this.setState({options:res.data});
     });
-    console.log(this.state.options);
   }
 
   async handleCreate(event) {
@@ -102,6 +101,7 @@ class Lecture_add extends Component {
       this.setState({ geoinfo: geoinfo });
     } else if (cat === "dates") {
       var geoinfo = this.state.geoinfo;
+      console.log(event.target.value);
       geoinfo.stdate = event.target.value.replaceAll("-", "/");
       this.setState({ geoinfo: geoinfo });
     } else if (cat === "datet") {
@@ -158,9 +158,9 @@ class Lecture_add extends Component {
             rowGap: "10px",
           }}
         >
-          <label>
+          <label >
             {"Name :  "}
-            <input
+            <input id="title"
               name="name"
               type="name"
               onChange={this.handleChange.bind(this, "lname")}
@@ -169,7 +169,7 @@ class Lecture_add extends Component {
           </label>
           <label>
             {"Organizer :  "}
-            <input
+            <input id="organizer"
               name="name"
               type="name"
               onChange={this.handleChange.bind(this, "oname")}
@@ -182,6 +182,7 @@ class Lecture_add extends Component {
             <label>
               {"Date from :  "}
               <input
+                id="date"
                 name="email"
                 type="date"
                 onChange={this.handleChange.bind(this, "dates")}
@@ -243,7 +244,7 @@ class Lecture_add extends Component {
             <select onChange={this.handleChange.bind(this, "instructor")}>
               {
                 this.state.options.map((e)=>(
-                  <option  value={e.lecturer_id}>{e.name}</option>
+                  <option id="instructorList" value={e.lecturer_id}>{e.name}</option>
                 ))
               }
             </select>
@@ -277,6 +278,7 @@ class Lecture_add extends Component {
           <label>
             {"Syllabus (Comma separated) :  "}
             <input
+              id="syllabus"
               name="syllabus"
               type="text"
               onChange={this.handleChange.bind(this, "syllabus")}
@@ -286,6 +288,7 @@ class Lecture_add extends Component {
           <label>
             {"Departments (Comma separated) :  "}
             <input
+              id="departments"
               name="departments"
               type="text"
               onChange={this.handleChange.bind(this, "dep")}
@@ -295,6 +298,7 @@ class Lecture_add extends Component {
           <label>
             {"Year of study (Comma separated) :  "}
             <input
+              id="year"
               name="year"
               type="text"
               onChange={this.handleChange.bind(this, "year")}
@@ -304,6 +308,7 @@ class Lecture_add extends Component {
           <label>
             {"Topics (Comma separated) :  "}
             <input
+              id="topic"
               name="topic"
               type="text"
               onChange={this.handleChange.bind(this, "topic")}
@@ -361,9 +366,3 @@ class Lecture_add extends Component {
 }
 
 export default Lecture_add;
-
-/*
-<div onClick={this.handleCreate.bind(this)} style={{margin:"20px",backgroundColor:"orangered",color:"white",borderRadius:"10px",padding:"10px",paddingLeft:"50px",paddingRight:"50px",cursor:"pointer"}}>
-            Create Lecture
-          </div>
-*/

@@ -7,33 +7,11 @@ import {configure} from 'enzyme';
 configure({adapter: new Adapter() });
 
 describe('home', () => {
-    const wrapper = shallow(<Home.WrappedComponent/>);
-
-    it('checking type to be user', () => {
-        expect(wrapper.state('type')).toBe('user');
-    });
+    const wrapper = shallow(<Home.WrappedComponent />);
 
     it('checking section id', () => {
         expect(wrapper.state('section')).toBe(1);
     });
-
-
-    
-
-      it('Checking count getdata',async () => {
-        const wrapper2 = shallow(<Home.WrappedComponent/>);
-        const instance=wrapper2.instance();
-        var orgdata=wrapper.state().count;
-        
-        localStorage.setItem('userID',"jFRWF4kP5HfyPNgDyJUiG83Oc8k1");
-        await instance.getdata();
-        var data=wrapper.state().count;
-        var c=0;
-        for(var key in data)
-            c++;
-        expect(c).toBe(0);
-        localStorage.clear();
-      });
 
       it('checking My registration page', () => {
         
