@@ -32,7 +32,6 @@ class Singledoc extends Component {
     render() { 
         return ( 
             <div style={{textAlign:'center',}}>
-                <a href='/somefile.txt' download>
                     <div class="REPcontent">
                         <div class="REPcontent-overlay"></div>
                         <div>
@@ -47,7 +46,6 @@ class Singledoc extends Component {
                     </div>
                     
                     <div>{this.state.name}</div>
-                </a>
             </div>
          );
     }

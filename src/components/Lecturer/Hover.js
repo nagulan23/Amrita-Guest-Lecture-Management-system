@@ -12,11 +12,11 @@ class Hover extends Component {
           <div class="HOVcontent-overlay"></div>
           <img class="HOVcontent-image" src={this.props.data.url}/>
           <div class="HOVcontent-details fadeIn-bottom">
-            <h3 class="HOVcontent-title">{this.props.data.date}</h3>
-            <p class="HOVcontent-text">{this.props.data.des}</p>
+            <h3 className="HOVcontent-title">{this.props.data.date}</h3>
+            <p className="HOVcontent-text">{this.props.data.des}</p>
           </div>
         </div>
-        <div style={{width:"100%",padding:"10px",textAlign:"center",fontWeight:"bold"}}>{this.props.data.title}</div>
+        <div className="lectitle" style={{width:"100%",padding:"10px",textAlign:"center",fontWeight:"bold"}}>{this.props.data.title}</div>
       </div>
     );
   }

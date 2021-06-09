@@ -4,6 +4,8 @@ import Hover from './Hover';
 import ScrollContainer from "react-indiana-drag-scroll";
 import Lecturer_dp from "./face";
 import Contact from "./MailLinkedin";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class Lecturer extends Component {
   state = {
@@ -50,16 +52,22 @@ class Lecturer extends Component {
             </div>
           </div>
           <div >
-            <Lecturer_dp profile={this.props.history.location.state.detail.profile}/>
-            <Contact gmail={this.props.history.location.state.detail.gmail} linkedin={this.props.history.location.state.detail.linkedin}/>
+              <Lecturer_dp style={{marginTop:"90px",flexDirection:"row"}}  profile={this.props.history.location.state.detail.profile}/>
           </div>
           <div/>
+          
         </div>
+        <Row style={{marginTop:"-70px"}}>
+          <Col></Col>
+          <Col>       
+           <Contact  style={{}} gmail={this.props.history.location.state.detail.gmail} linkedin={this.props.history.location.state.detail.linkedin}/> 
+          </Col>
+        </Row>
         <div style={{
              border:"1px solid black",
-             borderRadius:"10px", 
+             borderRadius:"10px",
              margin:"auto",
-             marginTop:"20px",
+             marginTop:"40px",
              marginBottom:"20px",
              padding:"10px",
              overflow:"auto",  
