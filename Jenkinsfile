@@ -17,9 +17,8 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh 'npm start' 
+                sh 'npm build' 
                 input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh 'killall node' 
             }
         }
     }
